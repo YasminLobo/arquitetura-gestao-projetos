@@ -36,10 +36,10 @@ Site interativo e bilíngue (**Português / Inglês**) desenvolvido em **HTML5, 
 
 ## Integrantes e Links do GitHub Pages
 
-- **Yasmin Lobo** — [https://yasminslobo.github.io/arquitetura-gestao-projetos/](https://yasminslobo.github.io/arquitetura-gestao-projetos/)
+- **Yasmin Lobo** — [https://yasminlobo.github.io/arquitetura-gestao-projetos/](https://yasminlobo.github.io/arquitetura-gestao-projetos/)
 
 ### Como outros integrantes da equipe podem publicar no seu próprio GitHub Pages em 1 minuto:
-1. Acesse o repositório principal no GitHub e clique no botão **Fork** (no canto superior direito) para copiar o projeto para a sua própria conta do GitHub.
+1. Acesse o repositório principal no GitHub ([github.com/YasminLobo/arquitetura-gestao-projetos](https://github.com/YasminLobo/arquitetura-gestao-projetos)) e clique no botão **Fork** (no canto superior direito) para copiar o projeto para a sua própria conta do GitHub.
 2. No seu repositório copiado, vá na aba **Settings** (Configurações) → menu lateral **Pages**.
 3. Em **Build and deployment** > **Branch**, selecione a branch `main` (pasta `/ (root)`) e clique em **Save**.
 4. Aguarde cerca de 1 minuto e seu link único estará ativo em: `https://SEU-USUARIO.github.io/arquitetura-gestao-projetos/`.
@@ -55,4 +55,4 @@ Site interativo e bilíngue (**Português / Inglês**) desenvolvido em **HTML5, 
 > Quando uma equipe adota microsserviços cedo demais, sem que as fronteiras do domínio estejam claras, o projeto paga o que Fowler chama de Microservice Premium: o cronograma desacelera e o custo de infraestrutura sobe antes de o produto validar seu valor. Da mesma forma, adotar Micro Frontends ou separar camadas de apresentação, domínio e dados redefine diretamente a autonomia das equipes (Lei de Conway) e o custo de manutenção no longo prazo.
 >
 > O material completo, com diagramas e matrizes de impacto em português e inglês, está disponível em:
-> https://yasminslobo.github.io/arquitetura-gestao-projetos/
+> https://yasminlobo.github.io/arquitetura-gestao-projetos/

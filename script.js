@@ -7,8 +7,8 @@
       name: 'Yasmin Lobo',
       rolePt: 'Gestão de Projetos & Arquitetura de Software',
       roleEn: 'Project Management & Software Architecture',
-      github: 'https://github.com/YasminSLobo',
-      pages: 'https://yasminslobo.github.io/arquitetura-gestao-projetos/'
+      github: 'https://github.com/YasminLobo',
+      pages: 'https://yasminlobo.github.io/arquitetura-gestao-projetos/'
     }
   ];
 
