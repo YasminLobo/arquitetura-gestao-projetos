@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eixo 2: Micro Frontends | Arquitetura & Gestão de Projetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">AF</span>
+        <span data-pt="Arquitetura & Gestão" data-en="Architecture & PM">Arquitetura & Gestão</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a>
+        <a href="eixo1-monolith-first.html" class="nav-link" data-pt="1. Monolith First" data-en="1. Monolith First">1. Monolith First</a>
+        <a href="eixo2-micro-frontends.html" class="nav-link active" data-pt="2. Micro Frontends" data-en="2. Micro Frontends">2. Micro Frontends</a>
+        <a href="eixo3-layering.html" class="nav-link" data-pt="3. Camadas (Layering)" data-en="3. Layering">3. Camadas (Layering)</a>
+      </nav>
+
+      <div class="nav-controls">
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn active" data-lang="pt">PT</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">☀️</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="eyebrow" data-pt="Eixo 2 • Fronteiras e Evolução • martinfowler.com (Cam Jackson)" data-en="Axis 2 • Boundaries & Evolution • martinfowler.com (Cam Jackson)">
+        Eixo 2 • Fronteiras e Evolução • martinfowler.com (Cam Jackson)
+      </div>
+      <h1>
+        <span>Micro Frontends:</span>
+        <span class="gradient-text" data-pt="Fronteiras Verticais e Equipes Independentes" data-en="Vertical Boundaries & Independent Teams">Fronteiras Verticais e Equipes Independentes</span>
+      </h1>
+      <p class="hero-subtitle"
+         data-pt="Como estender a autonomia dos microsserviços até a interface do usuário, dividindo um front-end monolítico em partes desenvolvidas e publicadas por equipes independentes."
+         data-en="How to extend microservice autonomy all the way to the user interface, slicing a monolithic frontend into pieces built and deployed by independent teams.">
+        Como estender a autonomia dos microsserviços até a interface do usuário, dividindo um front-end monolítico em partes desenvolvidas e publicadas por equipes independentes.
+      </p>
+      <div class="hero-meta">
+        <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener" class="btn btn-primary"
+           data-pt="Ler Post Original em martinfowler.com ↗" data-en="Read Original Post on martinfowler.com ↗">
+          Ler Post Original em martinfowler.com ↗
+        </a>
+        <a href="eixo3-layering.html" class="btn btn-outline"
+           data-pt="Próximo Eixo: Camadas (Layering) →" data-en="Next Axis: Layering →">
+          Próximo Eixo: Camadas (Layering) →
+        </a>
+      </div>
+    </section>
+
+    <!-- 1. Resumo da Ideia Central -->
+    <section class="diagram-box">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-pt="1. Resumo da Ideia Central (Com as Palavras da Equipe)" data-en="1. Core Idea Summary (In Our Team's Words)">
+            1. Resumo da Ideia Central (Com as Palavras da Equipe)
+          </h2>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:1.1rem;color:var(--text-secondary);font-size:0.98rem;margin-bottom:1.75rem;">
+        <p data-pt="Muitas organizações adotam microsserviços no back-end para escalar suas equipes, mas mantêm uma única aplicação gigante e acoplada no front-end (o <strong>Monólito de Front-end</strong>). Com o tempo, essa camada visual única se torna o principal gargalo do projeto: qualquer entrega de negócio exige coordenação entre o time de front-end e múltiplos times de back-end."
+           data-en="Many organizations adopt backend microservices to scale their teams, yet keep a single giant, tightly coupled application on the frontend (the <strong>Frontend Monolith</strong>). Over time, this single UI layer becomes the project's biggest bottleneck: every business feature requires coordination between the frontend team and multiple backend teams.">
+          Muitas organizações adotam microsserviços no back-end para escalar suas equipes, mas mantêm uma única aplicação gigante e acoplada no front-end (o <strong>Monólito de Front-end</strong>). Com o tempo, essa camada visual única se torna o principal gargalo do projeto: qualquer entrega de negócio exige coordenação entre o time de front-end e múltiplos times de back-end.
+        </p>
+        <p data-pt="A proposta de <strong>Micro Frontends</strong> consiste em fatiar a aplicação <strong>verticalmente por capacidade de negócio</strong> (por exemplo: Busca de Produtos, Catálogo, Carrinho e Checkout). Cada equipe multidisciplinar passa a ser dona de uma funcionalidade completa, do banco de dados até a interface web, com seu próprio repositório e pipeline de deploy independente."
+           data-en="The <strong>Micro Frontends</strong> approach slices the application <strong>vertically by business capability</strong> (e.g., Product Search, Catalog, Cart, and Checkout). Each cross-functional team owns a complete business feature from database to user interface, with its own repository and independent deployment pipeline.">
+          A proposta de <strong>Micro Frontends</strong> consiste em fatiar a aplicação <strong>verticalmente por capacidade de negócio</strong> (por exemplo: Busca de Produtos, Catálogo, Carrinho e Checkout). Cada equipe multidisciplinar passa a ser dona de uma funcionalidade completa, do banco de dados até a interface web, com seu próprio repositório e pipeline de deploy independente.
+        </p>
+        <p data-pt="No navegador ou no servidor, uma camada leve de composição (Container Application) integra os diferentes Micro Frontends em uma experiência fluida para o usuário, enquanto um <strong>Design System</strong> compartilhado garante consistência visual sem travar a autonomia de deploy de cada squad."
+           data-en="In the browser or on the server, a thin composition layer (Container Application) stitches the different Micro Frontends into a cohesive user experience, while a shared <strong>Design System</strong> preserves visual consistency without blocking each squad's deployment autonomy.">
+          No navegador ou no servidor, uma camada leve de composição (Container Application) integra os diferentes Micro Frontends em uma experiência fluida para o usuário, enquanto um <strong>Design System</strong> compartilhado garante consistência visual sem travar a autonomia de deploy de cada squad.
+        </p>
+      </div>
+
+      <!-- Diagrama SVG: Front-end Monolítico vs Micro Frontends por Equipes Verticais -->
+      <div class="svg-container">
+        <svg viewBox="0 0 860 350" width="860" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparativo Monólito de Front-end vs Micro Frontends">
+          <!-- Left Side: Frontend Monolith (Horizontal Silos) -->
+          <rect x="15" y="15" width="390" height="320" rx="14" fill="rgba(15,23,42,0.7)" stroke="rgba(239,68,68,0.4)" />
+          <text x="35" y="45" fill="#f87171" font-size="13.5" font-weight="700">Antes: Monólito de Front-end (Silos Horizontais)</text>
+
+          <rect x="40" y="65" width="340" height="72" rx="10" fill="rgba(239,68,68,0.15)" stroke="#ef4444" />
+          <text x="95" y="96" fill="#f8fafc" font-size="13" font-weight="700">Front-end Monolítico Único</text>
+          <text x="72" y="116" fill="#cbd5e1" font-size="11.5">Equipe de Front-end separada (Gargalo de entregas)</text>
+
+          <!-- Arrows down -->
+          <line x1="105" y1="138" x2="105" y2="178" stroke="#94a3b8" stroke-width="2" />
+          <line x1="210" y1="138" x2="210" y2="178" stroke="#94a3b8" stroke-width="2" />
+          <line x1="315" y1="138" x2="315" y2="178" stroke="#94a3b8" stroke-width="2" />
+
+          <rect x="45" y="180" width="105" height="60" rx="8" fill="rgba(99,102,241,0.16)" stroke="#6366f1" />
+          <text x="64" y="214" fill="#f8fafc" font-size="11.5" font-weight="600">API Busca</text>
+
+          <rect x="158" y="180" width="105" height="60" rx="8" fill="rgba(99,102,241,0.16)" stroke="#6366f1" />
+          <text x="171" y="214" fill="#f8fafc" font-size="11.5" font-weight="600">API Catálogo</text>
+
+          <rect x="270" y="180" width="105" height="60" rx="8" fill="rgba(99,102,241,0.16)" stroke="#6366f1" />
+          <text x="283" y="214" fill="#f8fafc" font-size="11.5" font-weight="600">API Checkout</text>
+
+          <text x="45" y="280" fill="#94a3b8" font-size="11.5">• 1 mudança de produto exige coordenar vários times</text>
+          <text x="45" y="302" fill="#94a3b8" font-size="11.5">• Deploy único arriscado para toda a interface web</text>
+
+          <!-- Right Side: Micro Frontends (Vertical Teams) -->
+          <rect x="430" y="15" width="415" height="320" rx="14" fill="rgba(15,23,42,0.7)" stroke="rgba(16,185,129,0.45)" />
+          <text x="450" y="45" fill="#34d399" font-size="13.5" font-weight="700">Com Micro Frontends: Squads Verticais Autônomas</text>
+
+          <!-- Container Shell -->
+          <rect x="450" y="62" width="375" height="38" rx="8" fill="rgba(6,182,212,0.18)" stroke="#06b6d4" />
+          <text x="515" y="86" fill="#22d3ee" font-size="12" font-weight="700">Aplicação Container (Roteamento & Composição)</text>
+
+          <!-- Vertical Team 1 -->
+          <rect x="450" y="114" width="115" height="198" rx="10" fill="rgba(99,102,241,0.14)" stroke="#6366f1" stroke-dasharray="4 3" />
+          <text x="468" y="136" fill="#818cf8" font-size="11.5" font-weight="700">Squad Busca</text>
+          <rect x="460" y="148" width="95" height="44" rx="6" fill="rgba(99,102,241,0.3)" />
+          <text x="474" y="174" fill="#fff" font-size="11" font-weight="600">MFE Busca</text>
+          <rect x="460" y="206" width="95" height="44" rx="6" fill="rgba(99,102,241,0.2)" />
+          <text x="470" y="232" fill="#cbd5e1" font-size="11">Serviço + DB</text>
+          <text x="462" y="282" fill="#34d399" font-size="10.5" font-weight="700">Deploy Próprio</text>
+
+          <!-- Vertical Team 2 -->
+          <rect x="580" y="114" width="115" height="198" rx="10" fill="rgba(6,182,212,0.14)" stroke="#06b6d4" stroke-dasharray="4 3" />
+          <text x="593" y="136" fill="#22d3ee" font-size="11.5" font-weight="700">Squad Catálogo</text>
+          <rect x="590" y="148" width="95" height="44" rx="6" fill="rgba(6,182,212,0.3)" />
+          <text x="598" y="174" fill="#fff" font-size="11" font-weight="600">MFE Produto</text>
+          <rect x="590" y="206" width="95" height="44" rx="6" fill="rgba(6,182,212,0.2)" />
+          <text x="600" y="232" fill="#cbd5e1" font-size="11">Serviço + DB</text>
+          <text x="592" y="282" fill="#34d399" font-size="10.5" font-weight="700">Deploy Próprio</text>
+
+          <!-- Vertical Team 3 -->
+          <rect x="710" y="114" width="115" height="198" rx="10" fill="rgba(16,185,129,0.14)" stroke="#10b981" stroke-dasharray="4 3" />
+          <text x="720" y="136" fill="#34d399" font-size="11.5" font-weight="700">Squad Checkout</text>
+          <rect x="720" y="148" width="95" height="44" rx="6" fill="rgba(16,185,129,0.3)" />
+          <text x="725" y="174" fill="#fff" font-size="11" font-weight="600">MFE Pagamento</text>
+          <rect x="720" y="206" width="95" height="44" rx="6" fill="rgba(16,185,129,0.2)" />
+          <text x="730" y="232" fill="#cbd5e1" font-size="11">Serviço + DB</text>
+          <text x="722" y="282" fill="#34d399" font-size="10.5" font-weight="700">Deploy Próprio</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2. Vantagens e Desvantagens -->
+    <section>
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-pt="2. Vantagens e Desvantagens dos Micro Frontends" data-en="2. Pros & Cons of Micro Frontends">
+            2. Vantagens e Desvantagens dos Micro Frontends
+          </h2>
+        </div>
+      </div>
+
+      <div class="pros-cons-grid">
+        <div class="pc-card pros">
+          <div class="pc-title">
+            <span style="color:var(--accent-3);">✔</span>
+            <span data-pt="Vantagens" data-en="Advantages (Pros)">Vantagens</span>
+          </div>
+          <ul class="pc-list">
+            <li>
+              <span class="pc-badge">+</span>
+              <span data-pt="<strong>Deploys independentes:</strong> Uma equipe pode publicar melhorias no Checkout sem precisar testar ou recompilar o Catálogo inteiro."
+                    data-en="<strong>Independent deployments:</strong> A team can ship Checkout improvements without rebuilding or retesting the entire Catalog.">
+                <strong>Deploys independentes:</strong> Uma equipe pode publicar melhorias no Checkout sem precisar testar ou recompilar o Catálogo inteiro.
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">+</span>
+              <span data-pt="<strong>Bases de código menores e desacopladas:</strong> Código mais fácil de entender, manter e refatorar, evitando dependências indesejadas entre módulos."
+                    data-en="<strong>Smaller, decoupled codebases:</strong> Easier to understand, maintain, and refactor without accidental cross-module coupling.">
+                <strong>Bases de código menores e desacopladas:</strong> Código mais fácil de entender, manter e refatorar, evitando dependências indesejadas entre módulos.
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">+</span>
+              <span data-pt="<strong>Atualizações e migrações incrementais:</strong> Permite modernizar partes da interface gradualmente sem exigir uma reescrita total ('Big Bang')."
+                    data-en="<strong>Incremental upgrades:</strong> Enables modernizing parts of the UI gradually without a risky 'Big Bang' rewrite.">
+                <strong>Atualizações e migrações incrementais:</strong> Permite modernizar partes da interface gradualmente sem exigir uma reescrita total ('Big Bang').
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">+</span>
+              <span data-pt="<strong>Autonomia real de ponta a ponta:</strong> Alinha a arquitetura de software à estrutura de squads orientadas ao produto (Lei de Conway)."
+                    data-en="<strong>True end-to-end team autonomy:</strong> Aligns software architecture with product-oriented squad structures (Conway's Law).">
+                <strong>Autonomia real de ponta a ponta:</strong> Alinha a arquitetura de software à estrutura de squads orientadas ao produto (Lei de Conway).
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pc-card cons">
+          <div class="pc-title">
+            <span style="color:var(--accent-danger);">✖</span>
+            <span data-pt="Desvantagens" data-en="Disadvantages (Cons)">Desvantagens</span>
+          </div>
+          <ul class="pc-list">
+            <li>
+              <span class="pc-badge">−</span>
+              <span data-pt="<strong>Aumento do tamanho de download (Payload Size):</strong> Risco de duplicar bibliotecas JavaScript e CSS se as dependências não forem bem gerenciadas."
+                    data-en="<strong>Increased payload size:</strong> Risk of duplicating JavaScript and CSS libraries across micro frontends if dependencies aren't managed carefully.">
+                <strong>Aumento do tamanho de download (Payload Size):</strong> Risco de duplicar bibliotecas JavaScript e CSS se as dependências não forem bem gerenciadas.
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">−</span>
+              <span data-pt="<strong>Risco de fragmentação visual (UX inconsistente):</strong> Sem um Design System compartilhado e governança, cada parte da tela pode parecer um site diferente."
+                    data-en="<strong>Risk of visual fragmentation (inconsistent UX):</strong> Without a shared Design System and governance, different widgets may look disjointed.">
+                <strong>Risco de fragmentação visual (UX inconsistente):</strong> Sem um Design System compartilhado e governança, cada parte da tela pode parecer um site diferente.
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">−</span>
+              <span data-pt="<strong>Complexidade operacional e de ambiente:</strong> Mais repositórios, mais pipelines de CI/CD, mais scripts de build e monitoramento distribuído."
+                    data-en="<strong>Operational and environment complexity:</strong> More repositories, more CI/CD pipelines, build scripts, and distributed monitoring.">
+                <strong>Complexidade operacional e de ambiente:</strong> Mais repositórios, mais pipelines de CI/CD, mais scripts de build e monitoramento distribuído.
+              </span>
+            </li>
+            <li>
+              <span class="pc-badge">−</span>
+              <span data-pt="<strong>Excesso para equipes pequenas:</strong> Assim como nos microsserviços, se houver apenas uma ou duas equipes, a sobrecarga não compensa."
+                    data-en="<strong>Overkill for small teams:</strong> Just like backend microservices, if you only have one or two teams, the overhead outweighs the benefits.">
+                <strong>Excesso para equipes pequenas:</strong> Assim como nos microsserviços, se houver apenas uma ou duas equipes, a sobrecarga não compensa.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Impacto na Gestão do Projeto -->
+    <section>
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" data-pt="3. Impacto na Gestão do Projeto (Prazo, Custo, Equipe e Riscos)" data-en="3. Impact on Project Management (Schedule, Cost, Team & Risks)">
+            3. Impacto na Gestão do Projeto (Prazo, Custo, Equipe e Riscos)
+          </h2>
+          <p class="section-desc" data-pt="Como dividir a interface em Micro Frontends transforma a governança do projeto." data-en="How slicing the interface into Micro Frontends transforms project governance.">
+            Como dividir a interface em Micro Frontends transforma a governança do projeto.
+          </p>
+        </div>
+      </div>
+
+      <div class="pm-grid">
+        <!-- Prazo -->
+        <div class="pm-card">
+          <div class="pm-card-header">
+            <div class="pm-pillar-title">
+              <span>⏱️</span>
+              <span data-pt="Prazo (Cronograma)" data-en="Schedule (Time)">Prazo (Cronograma)</span>
+            </div>
+            <span class="pm-level level-med" data-pt="Rápido em Escala" data-en="Fast at Scale">Rápido em Escala</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 78%; background: var(--accent-2);"></div>
+          </div>
+          <p data-pt="<strong>Paralelismo real de cronogramas:</strong> Exige um investimento inicial no cronograma para criar a aplicação Container e o Design System. Depois disso, elimina filas de espera entre times: 4 ou 5 squads conseguem entregar funcionalidades simultaneamente sem bloquear o release umas das outras."
+             data-en="<strong>True schedule parallelism:</strong> Requires upfront time to build the Container app and Design System. Afterwards, it removes cross-team waiting queues: 4 or 5 squads can ship features simultaneously without blocking each other's releases.">
+            <strong>Paralelismo real de cronogramas:</strong> Exige um investimento inicial no cronograma para criar a aplicação Container e o Design System. Depois disso, elimina filas de espera entre times: 4 ou 5 squads conseguem entregar funcionalidades simultaneamente sem bloquear o release umas das outras.
+          </p>
+        </div>
+
+        <!-- Custo -->
+        <div class="pm-card">
+          <div class="pm-card-header">
+            <div class="pm-pillar-title">
+              <span>💰</span>
+              <span data-pt="Custo (Orçamento)" data-en="Cost (Budget)">Custo (Orçamento)</span>
+            </div>
+            <span class="pm-level level-high" data-pt="Investimento Maior" data-en="Higher Investment">Investimento Maior</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 72%; background: var(--accent-warn);"></div>
+          </div>
+          <p data-pt="<strong>Custo de plataforma e governança:</strong> Aumenta o custo de automação de CI/CD e exige manter uma biblioteca de componentes compartilhada. Em compensação, reduz drasticamente o custo de reuniões de sincronismo inter-equipes e o custo de grandes reescritas futuras."
+             data-en="<strong>Platform and governance cost:</strong> Increases CI/CD automation costs and requires maintaining a shared component library. In return, it drastically lowers the cost of cross-team coordination meetings and avoids expensive full rewrites.">
+            <strong>Custo de plataforma e governança:</strong> Aumenta o custo de automação de CI/CD e exige manter uma biblioteca de componentes compartilhada. Em compensação, reduz drasticamente o custo de reuniões de sincronismo inter-equipes e o custo de grandes reescritas futuras.
+          </p>
+        </div>
+
+        <!-- Equipe -->
+        <div class="pm-card">
+          <div class="pm-card-header">
+            <div class="pm-pillar-title">
+              <span>👥</span>
+              <span data-pt="Equipe" data-en="Team">Equipe</span>
+            </div>
+            <span class="pm-level level-low" data-pt="Alta Autonomia" data-en="High Autonomy">Alta Autonomia</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 92%; background: var(--accent-3);"></div>
+          </div>
+          <p data-pt="<strong>Mudança estrutural (Lei de Conway):</strong> O gerente de projetos deixa de organizar a equipe em 'Time de Front-end' e 'Time de Back-end' e passa a estruturar <strong>Squads Multidisciplinares Verticais</strong> (com devs front, back e UX trabalhando juntos no mesmo objetivo de negócio)."
+             data-en="<strong>Structural shift (Conway's Law):</strong> The project manager stops splitting people into 'Frontend Team' vs. 'Backend Team' and instead forms <strong>Vertical Cross-Functional Squads</strong> (frontend, backend, and UX working together on the same business goal).">
+            <strong>Mudança estrutural (Lei de Conway):</strong> O gerente de projetos deixa de organizar a equipe em 'Time de Front-end' e 'Time de Back-end' e passa a estruturar <strong>Squads Multidisciplinares Verticais</strong> (com devs front, back e UX trabalhando juntos no mesmo objetivo de negócio).
+          </p>
+        </div>
+
+        <!-- Riscos -->
+        <div class="pm-card">
+          <div class="pm-card-header">
+            <div class="pm-pillar-title">
+              <span>⚠️</span>
+              <span data-pt="Riscos" data-en="Risks">Riscos</span>
+            </div>
+            <span class="pm-level level-med" data-pt="Performance & UX" data-en="Performance & UX">Performance & UX</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 65%; background: var(--accent-warn);"></div>
+          </div>
+          <p data-pt="<strong>Isolamento de falhas vs. Anarquia tecnológica:</strong> Reduz o risco de uma falha derrubar todo o site. Porém, cria o risco de cada equipe escolher um framework diferente sem critério, degradando a performance no navegador do usuário e gerando inconsistência visual."
+             data-en="<strong>Fault isolation vs. Tech sprawl:</strong> Reduces the risk of a single bug taking down the entire site. However, it introduces the risk of teams picking incompatible frameworks, degrading browser performance and visual consistency.">
+            <strong>Isolamento de falhas vs. Anarquia tecnológica:</strong> Reduz o risco de uma falha derrubar todo o site. Porém, cria o risco de cada equipe escolher um framework diferente sem critério, degradando a performance no navegador do usuário e gerando inconsistência visual.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Link para o Post Original -->
+    <section class="original-banner">
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:0.3rem;"
+            data-pt="4. Referência Oficial Verificada"
+            data-en="4. Verified Official Reference">4. Referência Oficial Verificada</h3>
+        <p style="color:var(--text-secondary);font-size:0.92rem;"
+           data-pt="Artigo original em martinfowler.com: 'Micro Frontends' por Cam Jackson (19 de junho de 2019)."
+           data-en="Original article on martinfowler.com: 'Micro Frontends' by Cam Jackson (June 19, 2019).">
+          Artigo original em martinfowler.com: 'Micro Frontends' por Cam Jackson (19 de junho de 2019).
+        </p>
+      </div>
+      <a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank" rel="noopener" class="btn btn-primary"
+         data-pt="Acessar martinfowler.com/articles/micro-frontends.html ↗"
+         data-en="Visit martinfowler.com/articles/micro-frontends.html ↗">
+        Acessar martinfowler.com/articles/micro-frontends.html ↗
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-pt="Projeto Acadêmico SENAI EAD • Eixo 2: Fronteiras e Evolução (Micro Frontends) • Martin Fowler"
+       data-en="SENAI EAD Academic Project • Axis 2: Boundaries & Evolution (Micro Frontends) • Martin Fowler">
+      Projeto Acadêmico SENAI EAD • Eixo 2: Fronteiras e Evolução (Micro Frontends) • Martin Fowler
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
