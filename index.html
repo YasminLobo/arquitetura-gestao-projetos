@@ -1,70 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arquitetura de Software & Gestão de Projetos | Martin Fowler</title>
+  <title>Arquitetura de Software e Gestão de Projetos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navbar -->
   <header class="navbar">
     <div class="navbar-inner">
       <a href="index.html" class="brand">
-        <span class="brand-badge">AF</span>
-        <span data-pt="Arquitetura & Gestão" data-en="Architecture & PM">Arquitetura & Gestão</span>
+        <span class="brand-dot"></span>
+        <span data-pt="Arquitetura & Gestão" data-en="Architecture & Management">Arquitetura & Gestão</span>
       </a>
 
       <nav class="nav-links">
         <a href="index.html" class="nav-link active" data-pt="Início" data-en="Home">Início</a>
-        <a href="eixo1-monolith-first.html" class="nav-link" data-pt="1. Monolith First" data-en="1. Monolith First">1. Monolith First</a>
-        <a href="eixo2-micro-frontends.html" class="nav-link" data-pt="2. Micro Frontends" data-en="2. Micro Frontends">2. Micro Frontends</a>
-        <a href="eixo3-layering.html" class="nav-link" data-pt="3. Camadas (Layering)" data-en="3. Layering">3. Camadas (Layering)</a>
+        <a href="eixo1-monolith-first.html" class="nav-link">Monolith First</a>
+        <a href="eixo2-micro-frontends.html" class="nav-link">Micro Frontends</a>
+        <a href="eixo3-layering.html" class="nav-link" data-pt="Camadas" data-en="Layering">Camadas</a>
       </nav>
 
       <div class="nav-controls">
-        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <div class="lang-switch" role="group" aria-label="Idioma">
           <button type="button" class="lang-btn active" data-lang="pt">PT</button>
           <button type="button" class="lang-btn" data-lang="en">EN</button>
         </div>
-        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">☀️</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero -->
     <section class="hero">
-      <div class="eyebrow" data-pt="SENAI EAD • UC Gestão de Projetos • Referência: Martin Fowler" data-en="SENAI EAD • Project Management Course • Reference: Martin Fowler">
-        SENAI EAD • UC Gestão de Projetos • Referência: Martin Fowler
-      </div>
-      <h1>
-        <span data-pt="Decisões de Arquitetura são" data-en="Architecture Decisions are">Decisões de Arquitetura são</span>
-        <span class="gradient-text" data-pt="Decisões de Gestão de Projetos" data-en="Project Management Decisions">Decisões de Gestão de Projetos</span>
+      <span class="eyebrow" data-pt="SENAI EAD • Gestão de Projetos" data-en="SENAI EAD • Project Management">SENAI EAD • Gestão de Projetos</span>
+      <h1 data-pt="Como escolhas de arquitetura de software moldam a gestão de um projeto"
+          data-en="How software architecture choices shape project management">
+        Como escolhas de arquitetura de software moldam a gestão de um projeto
       </h1>
       <p class="hero-subtitle"
-         data-pt="Uma análise visual e interativa de três artigos fundamentais de Martin Fowler — um de cada eixo arquitetural — demonstrando como escolhas técnicas moldam diretamente o prazo, o custo, a estrutura das equipes e os riscos de um projeto."
-         data-en="A visual and interactive analysis of three foundational articles by Martin Fowler — one from each architectural axis — demonstrating how technical choices directly shape project schedule, cost, team topology, and risk.">
-        Uma análise visual e interativa de três artigos fundamentais de Martin Fowler — um de cada eixo arquitetural — demonstrando como escolhas técnicas moldam diretamente o prazo, o custo, a estrutura das equipes e os riscos de um projeto.
+         data-pt="Um estudo prático baseado em três artigos de Martin Fowler, analisando como decisões de estrutura técnica afetam diretamente o prazo, o orçamento, a divisão das equipes e os riscos de entrega."
+         data-en="A practical study based on three articles by Martin Fowler, examining how technical structure decisions directly impact schedule, budget, team division, and delivery risks.">
+        Um estudo prático baseado em três artigos de Martin Fowler, analisando como decisões de estrutura técnica afetam diretamente o prazo, o orçamento, a divisão das equipes e os riscos de entrega.
       </p>
       <div class="hero-meta">
-        <a href="#eixos" class="btn btn-primary" data-pt="Explorar os 3 Eixos Arquiteturais ↓" data-en="Explore the 3 Architectural Axes ↓">Explorar os 3 Eixos Arquiteturais ↓</a>
-        <a href="#equipe" class="btn btn-outline" data-pt="Ver Integrantes & GitHub Pages" data-en="View Team & GitHub Pages">Ver Integrantes & GitHub Pages</a>
+        <a href="#artigos" class="btn btn-primary" data-pt="Ver os 3 artigos analisados" data-en="View the 3 analyzed articles">Ver os 3 artigos analisados</a>
+        <a href="#equipe" class="btn btn-outline" data-pt="Integrantes da equipe" data-en="Team members">Integrantes da equipe</a>
       </div>
     </section>
 
-    <!-- Os 3 Posts Escolhidos -->
-    <section id="eixos">
+    <!-- Os 3 Artigos -->
+    <section id="artigos">
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="Os 3 Eixos de Arquitetura Selecionados" data-en="The 3 Selected Architectural Axes">Os 3 Eixos de Arquitetura Selecionados</h2>
-          <p class="section-desc" data-pt="Clique em qualquer card para abrir a página completa com diagramas, vantagens, desvantagens e matriz de gestão." data-en="Click on any card to open the full page with diagrams, pros/cons, and project management impact matrix.">
-            Clique em qualquer card para abrir a página completa com diagramas, vantagens, desvantagens e matriz de gestão.
-          </p>
-        </div>
+        <span class="section-label" data-pt="Leituras Selecionadas" data-en="Selected Readings">Leituras Selecionadas</span>
+        <h2 class="section-title" data-pt="Um conceito de cada eixo arquitetural" data-en="One concept from each architectural axis">Um conceito de cada eixo arquitetural</h2>
       </div>
 
       <div class="cards-grid">
@@ -73,23 +64,23 @@
           <div>
             <span class="axis-tag tag-eixo1" data-pt="Eixo 1 • Microsserviços" data-en="Axis 1 • Microservices">Eixo 1 • Microsserviços</span>
             <h3>Monolith First</h3>
-            <p data-pt="Por que quase todo sistema de microsserviços bem-sucedido começou como um monólito que cresceu demais — e por que iniciar direto com microsserviços cobra um pedágio alto em projetos com fronteiras incertas."
-               data-en="Why almost every successful microservice story started with a monolith that got too big — and why starting directly with microservices imposes a heavy tax when domain boundaries are still unclear.">
-              Por que quase todo sistema de microsserviços bem-sucedido começou como um monólito que cresceu demais — e por que iniciar direto com microsserviços cobra um pedágio alto em projetos com fronteiras incertas.
+            <p data-pt="Começar com um monólito bem modularizado permite validar o produto com rapidez e descobrir onde estão as fronteiras reais antes de dividir em microsserviços."
+               data-en="Starting with a well-modularized monolith lets teams validate the product quickly and discover real domain boundaries before splitting into microservices.">
+              Começar com um monólito bem modularizado permite validar o produto com rapidez e descobrir onde estão as fronteiras reais antes de dividir em microsserviços.
             </p>
             <div class="mini-metrics">
               <div class="mini-metric">
-                <span data-pt="Prazo Inicial" data-en="Initial Time-to-Market">Prazo Inicial</span>
-                <strong data-pt="Rápido no MVP" data-en="Fast MVP Delivery">Rápido no MVP</strong>
+                <span data-pt="Prazo Inicial" data-en="Initial Schedule">Prazo Inicial</span>
+                <strong data-pt="Entregas mais rápidas" data-en="Faster early delivery">Entregas mais rápidas</strong>
               </div>
               <div class="mini-metric">
-                <span data-pt="Risco Principal" data-en="Main Risk">Risco Principal</span>
-                <strong data-pt="Acoplamento futuro" data-en="Future coupling">Acoplamento futuro</strong>
+                <span data-pt="Ponto de Atenção" data-en="Watch Out For">Ponto de Atenção</span>
+                <strong data-pt="Manter modularidade" data-en="Keeping modularity">Manter modularidade</strong>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span data-pt="Acessar análise completa" data-en="Read full analysis">Acessar análise completa</span>
+            <span data-pt="Ler resumo e impacto na gestão" data-en="Read summary & management impact">Ler resumo e impacto na gestão</span>
             <span>→</span>
           </div>
         </a>
@@ -99,23 +90,23 @@
           <div>
             <span class="axis-tag tag-eixo2" data-pt="Eixo 2 • Fronteiras e Evolução" data-en="Axis 2 • Boundaries & Evolution">Eixo 2 • Fronteiras e Evolução</span>
             <h3>Micro Frontends</h3>
-            <p data-pt="Estendendo os princípios de independência para o front-end: como dividir uma interface web complexa em fatias verticais desenvolvidas, testadas e publicadas por equipes autônomas de ponta a ponta."
-               data-en="Extending independence principles to the frontend: how to slice a complex web interface into vertical features built, tested, and deployed by autonomous end-to-end teams.">
-              Estendendo os princípios de independência para o front-end: como dividir uma interface web complexa em fatias verticais desenvolvidas, testadas e publicadas por equipes autônomas de ponta a ponta.
+            <p data-pt="Divisão da interface web por áreas de negócio, permitindo que equipes diferentes desenvolvam e publiquem partes da tela de forma independente."
+               data-en="Slicing the web interface by business domain so independent teams can build and deploy parts of the UI autonomously.">
+              Divisão da interface web por áreas de negócio, permitindo que equipes diferentes desenvolvam e publiquem partes da tela de forma independente.
             </p>
             <div class="mini-metrics">
               <div class="mini-metric">
-                <span data-pt="Estrutura de Equipe" data-en="Team Topology">Estrutura de Equipe</span>
-                <strong data-pt="Squads Verticais" data-en="Vertical Squads">Squads Verticais</strong>
+                <span data-pt="Organização" data-en="Organization">Organização</span>
+                <strong data-pt="Equipes independentes" data-en="Independent teams">Equipes independentes</strong>
               </div>
               <div class="mini-metric">
-                <span data-pt="Risco Principal" data-en="Main Risk">Risco Principal</span>
-                <strong data-pt="Inconsistência de UI" data-en="UI Inconsistency">Inconsistência de UI</strong>
+                <span data-pt="Ponto de Atenção" data-en="Watch Out For">Ponto de Atenção</span>
+                <strong data-pt="Padronização visual" data-en="Visual consistency">Padronização visual</strong>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span data-pt="Acessar análise completa" data-en="Read full analysis">Acessar análise completa</span>
+            <span data-pt="Ler resumo e impacto na gestão" data-en="Read summary & management impact">Ler resumo e impacto na gestão</span>
             <span>→</span>
           </div>
         </a>
@@ -125,190 +116,103 @@
           <div>
             <span class="axis-tag tag-eixo3" data-pt="Eixo 3 • Camadas e Execução" data-en="Axis 3 • Layers & Execution">Eixo 3 • Camadas e Execução</span>
             <h3>Presentation Domain Data Layering</h3>
-            <p data-pt="A separação clássica entre Interface (Presentation), Regras de Negócio (Domain) e Persistência (Data) — e o alerta crucial de Fowler sobre quando agrupar por domínio antes de separar em camadas."
-               data-en="The classic separation into Presentation (UI), Domain Logic, and Data Access — plus Fowler's crucial insight on when to group high-level modules by domain before layering.">
-              A separação clássica entre Interface (Presentation), Regras de Negócio (Domain) e Persistência (Data) — e o alerta crucial de Fowler sobre quando agrupar por domínio antes de separar em camadas.
+            <p data-pt="Separação do código entre tela (Presentation), regras de negócio (Domain) e banco de dados (Data), mantendo o sistema organizado e fácil de testar."
+               data-en="Separating code into Presentation, Domain logic, and Data access to keep the system organized and easy to test.">
+              Separação do código entre tela (Presentation), regras de negócio (Domain) e banco de dados (Data), mantendo o sistema organizado e fácil de testar.
             </p>
             <div class="mini-metrics">
               <div class="mini-metric">
-                <span data-pt="Manutenibilidade" data-en="Maintainability">Manutenibilidade</span>
-                <strong data-pt="Alta e Testável" data-en="High & Testable">Alta e Testável</strong>
+                <span data-pt="Manutenção" data-en="Maintenance">Manutenção</span>
+                <strong data-pt="Código mais previsível" data-en="Predictable codebase">Código mais previsível</strong>
               </div>
               <div class="mini-metric">
-                <span data-pt="Risco Principal" data-en="Main Risk">Risco Principal</span>
-                <strong data-pt="Silos Horizontais" data-en="Horizontal Silos">Silos Horizontais</strong>
+                <span data-pt="Ponto de Atenção" data-en="Watch Out For">Ponto de Atenção</span>
+                <strong data-pt="Dividir por domínio antes" data-en="Group by domain first">Dividir por domínio antes</strong>
               </div>
             </div>
           </div>
           <div class="card-footer">
-            <span data-pt="Acessar análise completa" data-en="Read full analysis">Acessar análise completa</span>
+            <span data-pt="Ler resumo e impacto na gestão" data-en="Read summary & management impact">Ler resumo e impacto na gestão</span>
             <span>→</span>
           </div>
         </a>
       </div>
     </section>
 
-    <!-- Simulador Interativo de Complexidade -->
-    <section class="diagram-box">
-      <div class="diagram-header">
-        <div>
-          <h2 class="section-title" data-pt="Simulador Interativo: Qual estratégia adotar no seu projeto?" data-en="Interactive Simulator: Which strategy fits your project?">
-            Simulador Interativo: Qual estratégia adotar no seu projeto?
-          </h2>
-          <p class="section-desc" data-pt="Arraste o controle de complexidade e tamanho da equipe para ver a recomendação segundo os artigos de Martin Fowler." data-en="Drag the complexity and team size slider to see the recommendation based on Martin Fowler's articles.">
-            Arraste o controle de complexidade e tamanho da equipe para ver a recomendação segundo os artigos de Martin Fowler.
-          </p>
-        </div>
-      </div>
-
-      <div style="margin: 1.25rem 0;">
-        <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">
-          <span data-pt="1 Equipe / Domínio Novo (MVP)" data-en="1 Team / New Domain (MVP)">1 Equipe / Domínio Novo (MVP)</span>
-          <span data-pt="Produto em Crescimento" data-en="Growing Product">Produto em Crescimento</span>
-          <span data-pt="Múltiplas Squads / Escala Global" data-en="Multiple Squads / Global Scale">Múltiplas Squads / Escala Global</span>
-        </div>
-        <input id="complexity-slider" type="range" min="10" max="100" value="30" style="width:100%;accent-color:var(--accent-1);cursor:pointer;" />
-      </div>
-
-      <div id="simulator-verdict" style="padding:1.15rem 1.35rem;border-radius:var(--radius-md);background:var(--bg-secondary);border-left:4px solid var(--accent-2);font-size:0.95rem;">
-      </div>
-    </section>
-
-    <!-- Matriz Comparativa de Gestão -->
+    <!-- Quadro Comparativo -->
     <section>
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="Visão Geral: Impacto na Gestão do Projeto" data-en="Overview: Project Management Impact Matrix">
-            Visão Geral: Impacto na Gestão do Projeto
-          </h2>
-          <p class="section-desc" data-pt="Comparativo direto dos 3 conceitos nas quatro dimensões da gerência de projetos." data-en="Direct comparison of the 3 concepts across the four project management dimensions.">
-            Comparativo direto dos 3 conceitos nas quatro dimensões da gerência de projetos.
-          </p>
-        </div>
+        <span class="section-label" data-pt="Síntese" data-en="Overview">Síntese</span>
+        <h2 class="section-title" data-pt="Comparativo de impacto na gestão do projeto" data-en="Project management impact comparison">Comparativo de impacto na gestão do projeto</h2>
       </div>
 
       <div class="comparison-table-wrap">
         <table class="comparison-table">
           <thead>
             <tr>
-              <th data-pt="Conceito (Eixo)" data-en="Concept (Axis)">Conceito (Eixo)</th>
-              <th data-pt="Prazo (Cronograma)" data-en="Schedule (Time)">Prazo (Cronograma)</th>
-              <th data-pt="Custo (Orçamento)" data-en="Cost (Budget)">Custo (Orçamento)</th>
-              <th data-pt="Equipe (Organização)" data-en="Team (Topology)">Equipe (Organização)</th>
+              <th data-pt="Conceito" data-en="Concept">Conceito</th>
+              <th data-pt="Prazo" data-en="Schedule">Prazo</th>
+              <th data-pt="Custo" data-en="Cost">Custo</th>
+              <th data-pt="Equipe" data-en="Team">Equipe</th>
               <th data-pt="Riscos" data-en="Risks">Riscos</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>1. Monolith First</strong></td>
-              <td data-pt="Entregas iniciais rápidas; refatoração entre módulos é simples." data-en="Fast initial delivery; refactoring across boundaries is cheap.">Entregas iniciais rápidas; refatoração entre módulos é simples.</td>
-              <td data-pt="Baixo custo inicial de infraestrutura e DevOps." data-en="Low initial infrastructure and DevOps cost.">Baixo custo inicial de infraestrutura e DevOps.</td>
-              <td data-pt="Ideal para 1 time coeso; comunicação direta sem overhead." data-en="Ideal for 1 cohesive team; direct communication without overhead.">Ideal para 1 time coeso; comunicação direta sem overhead.</td>
-              <td data-pt="Tornar-se um 'Big Ball of Mud' se não houver modularidade interna." data-en="Becoming a 'Big Ball of Mud' if internal modularity is neglected.">Tornar-se um 'Big Ball of Mud' se não houver modularidade interna.</td>
+              <td><strong>Monolith First</strong></td>
+              <td data-pt="Acelera as primeiras entregas por não exigir infraestrutura distribuída." data-en="Speeds up early delivery by avoiding distributed infrastructure.">Acelera as primeiras entregas por não exigir infraestrutura distribuída.</td>
+              <td data-pt="Menor custo inicial de servidores e operação." data-en="Lower upfront server and operational costs.">Menor custo inicial de servidores e operação.</td>
+              <td data-pt="Funciona muito bem para equipes pequenas e médias no mesmo código." data-en="Works well for small-to-medium teams sharing one codebase.">Funciona muito bem para equipes pequenas e médias no mesmo código.</td>
+              <td data-pt="Código ficar emaranhado se a equipe não cuidar da divisão interna." data-en="Code becoming tangled if internal boundaries are ignored.">Código ficar emaranhado se a equipe não cuidar da divisão interna.</td>
             </tr>
             <tr>
-              <td><strong>2. Micro Frontends</strong></td>
-              <td data-pt="Setup inicial mais longo, mas acelera entregas paralelas em escala." data-en="Longer initial setup, but speeds up parallel delivery at scale.">Setup inicial mais longo, mas acelera entregas paralelas em escala.</td>
-              <td data-pt="Maior custo de pipelines CI/CD independentes e governança." data-en="Higher cost for independent CI/CD pipelines and governance.">Maior custo de pipelines CI/CD independentes e governança.</td>
-              <td data-pt="Equipes verticais autônomas por funcionalidade de negócio." data-en="Autonomous vertical teams aligned by business capability.">Equipes verticais autônomas por funcionalidade de negócio.</td>
-              <td data-pt="Bundles JS inchados, divergência visual e complexidade de integração." data-en="Bloated JS bundles, visual divergence, and integration complexity.">Bundles JS inchados, divergência visual e complexidade de integração.</td>
+              <td><strong>Micro Frontends</strong></td>
+              <td data-pt="Exige mais tempo no início, mas destrava entregas paralelas depois." data-en="Takes longer upfront, but unlocks parallel releases later.">Exige mais tempo no início, mas destrava entregas paralelas depois.</td>
+              <td data-pt="Aumenta o custo com pipelines de deploy e governança." data-en="Increases costs for deployment pipelines and governance.">Aumenta o custo com pipelines de deploy e governança.</td>
+              <td data-pt="Ideal quando há várias equipes trabalhando em partes distintas do produto." data-en="Ideal when multiple teams work on distinct product areas.">Ideal quando há várias equipes trabalhando em partes distintas do produto.</td>
+              <td data-pt="Telas ficarem visualmente diferentes ou pesadas para o usuário." data-en="Screens becoming visually inconsistent or heavy for users.">Telas ficarem visualmente diferentes ou pesadas para o usuário.</td>
             </tr>
             <tr>
-              <td><strong>3. Presentation-Domain-Data</strong></td>
-              <td data-pt="Ritmo previsível; facilita testes automatizados da lógica de negócio." data-en="Predictable pace; enables fast automated testing of domain logic.">Ritmo previsível; facilita testes automatizados da lógica de negócio.</td>
-              <td data-pt="Reduz custo de manutenção ao isolar mudanças de banco e UI." data-en="Lowers maintenance cost by isolating DB and UI changes.">Reduz custo de manutenção ao isolar mudanças de banco e UI.</td>
-              <td data-pt="Permite especialização, mas exige cuidado para não criar silos." data-en="Allows specialization, but requires care to avoid horizontal silos.">Permite especialização, mas exige cuidado para não criar silos.</td>
-              <td data-pt="Alterações simples atravessarem várias camadas desnecessariamente." data-en="Simple changes rippling across multiple layers unnecessarily.">Alterações simples atravessarem várias camadas desnecessariamente.</td>
+              <td><strong>Presentation-Domain-Data</strong></td>
+              <td data-pt="Mantém o ritmo de entregas estável conforme o projeto cresce." data-en="Keeps delivery pace steady as the project grows.">Mantém o ritmo de entregas estável conforme o projeto cresce.</td>
+              <td data-pt="Reduz gastos com retrabalho e facilita testes automatizados." data-en="Reduces rework expenses and simplifies automated testing.">Reduz gastos com retrabalho e facilita testes automatizados.</td>
+              <td data-pt="Facilita a divisão de tarefas entre interface, regra e dados." data-en="Clarifies responsibilities across UI, business rules, and data.">Facilita a divisão de tarefas entre interface, regra e dados.</td>
+              <td data-pt="Criar burocracia desnecessária caso o sistema seja muito simples." data-en="Adding unnecessary ceremony if the system is very simple.">Criar burocracia desnecessária caso o sistema seja muito simples.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Seção Integrantes da Equipe -->
+    <!-- Integrantes -->
     <section id="equipe">
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="Integrantes da Equipe & Links GitHub Pages" data-en="Team Members & GitHub Pages Links">
-            Integrantes da Equipe & Links GitHub Pages
-          </h2>
-          <p class="section-desc" data-pt="Links oficiais de publicação do projeto no GitHub Pages." data-en="Official project publication links on GitHub Pages.">
-            Links oficiais de publicação do projeto no GitHub Pages.
-          </p>
-        </div>
+        <span class="section-label" data-pt="Autoria e Publicação" data-en="Authorship & Publication">Autoria e Publicação</span>
+        <h2 class="section-title" data-pt="Integrantes da equipe" data-en="Team members">Integrantes da equipe</h2>
       </div>
 
       <div id="team-container" class="team-grid"></div>
 
       <form id="add-member-form" class="add-member-form">
-        <span style="font-size:0.85rem;font-weight:600;color:var(--text-secondary);"
-              data-pt="Adicionar integrante da equipe:"
-              data-en="Add team member:">Adicionar integrante da equipe:</span>
         <input id="member-name" type="text" class="input-field"
-               data-pt="Nome completo do integrante"
-               data-en="Member full name"
-               placeholder="Nome completo do integrante" />
+               data-pt="Nome do integrante"
+               data-en="Member name"
+               placeholder="Nome do integrante" />
         <input id="member-github-user" type="text" class="input-field"
                data-pt="Usuário do GitHub (ex: YasminSLobo)"
                data-en="GitHub username (e.g. YasminSLobo)"
                placeholder="Usuário do GitHub (ex: YasminSLobo)" />
         <button type="submit" class="btn btn-outline"
-                data-pt="+ Adicionar ao Site"
-                data-en="+ Add to Site">+ Adicionar ao Site</button>
+                data-pt="Adicionar integrante"
+                data-en="Add member">Adicionar integrante</button>
       </form>
-    </section>
-
-    <!-- Sugestão de Post para LinkedIn (Sem emojis e sem groselha, conforme pedido!) -->
-    <section class="linkedin-box">
-      <div class="section-header" style="margin-bottom:0.5rem;">
-        <div>
-          <h3 class="section-title" style="font-size:1.2rem;"
-              data-pt="Texto Pronto para Publicação no LinkedIn (Contexto: UC Gestão de Projetos)"
-              data-en="Ready-to-Use LinkedIn Post (Context: Project Management Course)">
-            Texto Pronto para Publicação no LinkedIn (Contexto: UC Gestão de Projetos)
-          </h3>
-          <p class="section-desc"
-             data-pt="Redigido de forma direta, técnica, sem emojis e sem clichês, relacionando arquitetura de software e gestão de projetos."
-             data-en="Written in a direct, technical tone without emojis or fluff, connecting software architecture and project management.">
-            Redigido de forma direta, técnica, sem emojis e sem clichês, relacionando arquitetura de software e gestão de projetos.
-          </p>
-        </div>
-        <button type="button" id="copy-linkedin-btn" class="btn btn-primary"
-                data-pt="Copiar Texto"
-                data-en="Copy Text">Copiar Texto</button>
-      </div>
-
-      <div id="linkedin-post-content" class="linkedin-text"
-           data-pt="Na Unidade Curricular de Gestão de Projetos do SENAI, desenvolvemos uma aplicação web para analisar um ponto que muitas vezes passa despercebido no dia a dia de engenharia: decisões de arquitetura de software são, na prática, decisões de gestão de projetos.
-
-A partir da literatura técnica de Martin Fowler, selecionamos três conceitos de eixos distintos — Monolith First, Micro Frontends e Presentation-Domain-Data Layering — e mapeamos como cada escolha impacta quatro variáveis críticas de qualquer projeto: prazo, custo, organização de equipe e riscos.
-
-Quando uma equipe adota microsserviços cedo demais, sem que as fronteiras do domínio estejam claras, o projeto paga o que Fowler chama de Microservice Premium: o cronograma desacelera e o custo de infraestrutura sobe antes de o produto validar seu valor. Da mesma forma, adotar Micro Frontends ou separar camadas de apresentação, domínio e dados redefine diretamente a autonomia das equipes (Lei de Conway) e o custo de manutenção no longo prazo.
-
-O material completo, com diagramas e matrizes de impacto em português e inglês, está disponível em:
-https://yasminslobo.github.io/arquitetura-gestao-projetos/"
-           data-en="As part of our Project Management course at SENAI, we built a web application to examine a principle often overlooked in software engineering: software architecture decisions are, in practice, project management decisions.
-
-Based on Martin Fowler's technical writings, we selected three concepts from distinct architectural axes — Monolith First, Micro Frontends, and Presentation-Domain-Data Layering — and mapped how each choice affects four critical project variables: schedule, cost, team structure, and risk.
-
-When a team adopts microservices too early, before domain boundaries are well understood, the project pays what Fowler calls the Microservice Premium: delivery slows down and infrastructure costs rise before the product validates its core value. Similarly, adopting Micro Frontends or separating presentation, domain, and data layers directly reshapes team autonomy (Conway's Law) and long-term maintenance costs.
-
-The complete bilingual material, including diagrams and impact matrices, is available at:
-https://yasminslobo.github.io/arquitetura-gestao-projetos/">Na Unidade Curricular de Gestão de Projetos do SENAI, desenvolvemos uma aplicação web para analisar um ponto que muitas vezes passa despercebido no dia a dia de engenharia: decisões de arquitetura de software são, na prática, decisões de gestão de projetos.
-
-A partir da literatura técnica de Martin Fowler, selecionamos três conceitos de eixos distintos — Monolith First, Micro Frontends e Presentation-Domain-Data Layering — e mapeamos como cada escolha impacta quatro variáveis críticas de qualquer projeto: prazo, custo, organização de equipe e riscos.
-
-Quando uma equipe adota microsserviços cedo demais, sem que as fronteiras do domínio estejam claras, o projeto paga o que Fowler chama de Microservice Premium: o cronograma desacelera e o custo de infraestrutura sobe antes de o produto validar seu valor. Da mesma forma, adotar Micro Frontends ou separar camadas de apresentação, domínio e dados redefine diretamente a autonomia das equipes (Lei de Conway) e o custo de manutenção no longo prazo.
-
-O material completo, com diagramas e matrizes de impacto em português e inglês, está disponível em:
-https://yasminslobo.github.io/arquitetura-gestao-projetos/</div>
     </section>
   </main>
 
   <footer class="footer">
-    <p data-pt="Projeto Acadêmico SENAI EAD • Arquitetura de Software e Gestão de Projetos • Conteúdo verificado com os artigos originais de Martin Fowler."
-       data-en="SENAI EAD Academic Project • Software Architecture & Project Management • Content verified against Martin Fowler's original articles.">
-      Projeto Acadêmico SENAI EAD • Arquitetura de Software e Gestão de Projetos • Conteúdo verificado com os artigos originais de Martin Fowler.
+    <p data-pt="Trabalho desenvolvido para a UC de Gestão de Projetos (SENAI EAD) • Baseado nos artigos de Martin Fowler."
+       data-en="Built for the Project Management course (SENAI EAD) • Based on articles by Martin Fowler.">
+      Trabalho desenvolvido para a UC de Gestão de Projetos (SENAI EAD) • Baseado nos artigos de Martin Fowler.
     </p>
   </footer>
 

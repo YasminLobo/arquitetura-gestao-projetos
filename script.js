@@ -1,15 +1,12 @@
-// script.js — Bilingual (PT-BR / EN-US), Theme Switcher, Team Manager & Interactive Controls
-
 (function () {
   const STORAGE_LANG_KEY = 'ead_arch_lang';
-  const STORAGE_THEME_KEY = 'ead_arch_theme';
   const STORAGE_TEAM_KEY = 'ead_arch_team_v1';
 
   const defaultTeam = [
     {
       name: 'Yasmin Lobo',
-      rolePt: 'Arquitetura de Software & Gestão de Projetos',
-      roleEn: 'Software Architecture & Project Management',
+      rolePt: 'Gestão de Projetos & Arquitetura de Software',
+      roleEn: 'Project Management & Software Architecture',
       github: 'https://github.com/YasminSLobo',
       pages: 'https://yasminslobo.github.io/arquitetura-gestao-projetos/'
     }
@@ -39,20 +36,6 @@
     });
 
     renderTeam();
-  }
-
-  function getTheme() {
-    return localStorage.getItem(STORAGE_THEME_KEY) || 'dark';
-  }
-
-  function setTheme(theme) {
-    localStorage.setItem(STORAGE_THEME_KEY, theme);
-    document.documentElement.setAttribute('data-theme', theme);
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-      themeBtn.title = theme === 'dark' ? 'Modo Claro / Light Mode' : 'Modo Escuro / Dark Mode';
-    }
   }
 
   function getTeam() {
@@ -93,7 +76,7 @@
         const role = lang === 'pt' ? member.rolePt : member.roleEn;
         const removeBtn =
           idx > 0
-            ? `<button onclick="window.removeTeamMember(${idx})" style="margin-left:auto;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:0.8rem;" title="Remover">✕</button>`
+            ? `<button onclick="window.removeTeamMember(${idx})" style="margin-left:auto;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:0.78rem;" title="Remover">✕</button>`
             : '';
         return `
         <div class="member-card">
@@ -106,8 +89,8 @@
             <p>${role}</p>
             <div class="member-links">
               <a href="${member.pages}" target="_blank" rel="noopener">GitHub Pages ↗</a>
-              <span style="color:var(--border-color)">|</span>
-              <a href="${member.github}" target="_blank" rel="noopener">GitHub Profile ↗</a>
+              <span style="color:var(--border)">•</span>
+              <a href="${member.github}" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </div>
         </div>
@@ -136,8 +119,8 @@
       const team = getTeam();
       team.push({
         name,
-        rolePt: 'Integrante da Equipe — Gestão de Projetos',
-        roleEn: 'Team Member — Project Management',
+        rolePt: 'Integrante da Equipe',
+        roleEn: 'Team Member',
         github: `https://github.com/${username}`,
         pages: `https://${username.toLowerCase()}.github.io/arquitetura-gestao-projetos/`
       });
@@ -147,74 +130,13 @@
     });
   }
 
-  function setupCopyLinkedIn() {
-    const copyBtn = document.getElementById('copy-linkedin-btn');
-    const textEl = document.getElementById('linkedin-post-content');
-    if (!copyBtn || !textEl) return;
-
-    copyBtn.addEventListener('click', () => {
-      const lang = getLang();
-      navigator.clipboard.writeText(textEl.innerText.trim()).then(() => {
-        const original = copyBtn.innerHTML;
-        copyBtn.innerHTML = lang === 'pt' ? 'Copiado para a área de transferência!' : 'Copied to clipboard!';
-        setTimeout(() => {
-          copyBtn.innerHTML = original;
-        }, 2200);
-      });
-    });
-  }
-
-  function setupSimulator() {
-    const slider = document.getElementById('complexity-slider');
-    const output = document.getElementById('simulator-verdict');
-    if (!slider || !output) return;
-
-    function updateSim() {
-      const val = parseInt(slider.value, 10);
-      const lang = getLang();
-      if (val < 40) {
-        output.innerHTML =
-          lang === 'pt'
-            ? '<strong>Baixa Complexidade Inicial:</strong> O modelo <em>Monolith First</em> entrega até <strong>3x mais rápido</strong> com menor custo operacional. Microsserviços aqui gerariam sobrecarga desnecessária (Microservice Premium).'
-            : '<strong>Low Initial Complexity:</strong> The <em>Monolith First</em> approach delivers up to <strong>3x faster</strong> with lower operational cost. Microservices here would cause unnecessary overhead (Microservice Premium).';
-      } else if (val < 75) {
-        output.innerHTML =
-          lang === 'pt'
-            ? '<strong>Média Complexidade (Fronteiras se consolidando):</strong> Momento ideal para modularizar o monólito em camadas claras (<em>Presentation-Domain-Data</em>) e preparar a extração gradual das partes mais críticas.'
-            : '<strong>Medium Complexity (Boundaries stabilizing):</strong> Ideal stage to modularize the monolith with clear layers (<em>Presentation-Domain-Data</em>) and prepare gradual extraction of critical modules.';
-      } else {
-        output.innerHTML =
-          lang === 'pt'
-            ? '<strong>Alta Escala e Múltiplas Equipes:</strong> Aqui o <em>Microservice Premium</em> se paga: decompor em serviços e <em>Micro Frontends</em> por capacidade de negócio evita bloqueios entre dezenas de desenvolvedores.'
-            : '<strong>High Scale & Multiple Teams:</strong> Here the <em>Microservice Premium</em> pays off: decomposing into services and <em>Micro Frontends</em> by business capability prevents bottlenecks across large teams.';
-      }
-    }
-
-    slider.addEventListener('input', updateSim);
-    document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setTimeout(updateSim, 20)));
-    updateSim();
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
-    // Theme init
-    setTheme(getTheme());
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        setTheme(getTheme() === 'dark' ? 'light' : 'dark');
-      });
-    }
-
-    // Language init
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         setLang(btn.getAttribute('data-lang'));
       });
     });
     setLang(getLang());
-
     setupTeamForm();
-    setupCopyLinkedIn();
-    setupSimulator();
   });
 })();

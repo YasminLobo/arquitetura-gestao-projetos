@@ -1,154 +1,140 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eixo 3: Presentation Domain Data Layering | Arquitetura & Gestão</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="navbar">
     <div class="navbar-inner">
       <a href="index.html" class="brand">
-        <span class="brand-badge">AF</span>
-        <span data-pt="Arquitetura & Gestão" data-en="Architecture & PM">Arquitetura & Gestão</span>
+        <span class="brand-dot"></span>
+        <span data-pt="Arquitetura & Gestão" data-en="Architecture & Management">Arquitetura & Gestão</span>
       </a>
 
       <nav class="nav-links">
         <a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a>
-        <a href="eixo1-monolith-first.html" class="nav-link" data-pt="1. Monolith First" data-en="1. Monolith First">1. Monolith First</a>
-        <a href="eixo2-micro-frontends.html" class="nav-link" data-pt="2. Micro Frontends" data-en="2. Micro Frontends">2. Micro Frontends</a>
-        <a href="eixo3-layering.html" class="nav-link active" data-pt="3. Camadas (Layering)" data-en="3. Layering">3. Camadas (Layering)</a>
+        <a href="eixo1-monolith-first.html" class="nav-link">Monolith First</a>
+        <a href="eixo2-micro-frontends.html" class="nav-link">Micro Frontends</a>
+        <a href="eixo3-layering.html" class="nav-link active" data-pt="Camadas" data-en="Layering">Camadas</a>
       </nav>
 
       <div class="nav-controls">
-        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <div class="lang-switch" role="group" aria-label="Idioma">
           <button type="button" class="lang-btn active" data-lang="pt">PT</button>
           <button type="button" class="lang-btn" data-lang="en">EN</button>
         </div>
-        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">☀️</button>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero -->
     <section class="hero">
-      <div class="eyebrow" data-pt="Eixo 3 • Camadas e Execução • Autor: Martin Fowler (2015)" data-en="Axis 3 • Layers & Execution • Author: Martin Fowler (2015)">
-        Eixo 3 • Camadas e Execução • Autor: Martin Fowler (2015)
-      </div>
-      <h1>
-        <span>Presentation-Domain-Data:</span>
-        <span class="gradient-text" data-pt="Separação de Responsabilidades em Camadas" data-en="Layered Separation of Concerns">Separação de Responsabilidades em Camadas</span>
+      <span class="eyebrow" data-pt="Eixo 3 • Camadas e Execução" data-en="Axis 3 • Layers & Execution">Eixo 3 • Camadas e Execução</span>
+      <h1 data-pt="Presentation Domain Data Layering: separando tela, negócio e dados"
+          data-en="Presentation Domain Data Layering: separating UI, business, and data">
+        Presentation Domain Data Layering: separando tela, negócio e dados
       </h1>
       <p class="hero-subtitle"
-         data-pt="Por que separar Apresentação (UI), Lógica de Domínio e Acesso a Dados é essencial — e por que sistemas maiores devem agrupar seus módulos principais por domínio antes de separar em camadas."
-         data-en="Why separating Presentation (UI), Domain Logic, and Data Access is essential — and why larger systems should group top-level modules by domain before layering.">
-        Por que separar Apresentação (UI), Lógica de Domínio e Acesso a Dados é essencial — e por que sistemas maiores devem agrupar seus módulos principais por domínio antes de separar em camadas.
+         data-pt="Como organizar o código em três camadas claras e por que sistemas maiores devem dividir seus módulos principais por área de negócio antes das camadas."
+         data-en="How to organize code into three clear layers and why larger systems should group top-level modules by business domain before layering.">
+        Como organizar o código em três camadas claras e por que sistemas maiores devem dividir seus módulos principais por área de negócio antes das camadas.
       </p>
       <div class="hero-meta">
         <a href="https://martinfowler.com/bliki/PresentationDomainDataLayering.html" target="_blank" rel="noopener" class="btn btn-primary"
-           data-pt="Ler Post Original de Martin Fowler ↗" data-en="Read Martin Fowler's Original Post ↗">
-          Ler Post Original de Martin Fowler ↗
+           data-pt="Artigo original (Martin Fowler) ↗" data-en="Original article (Martin Fowler) ↗">
+          Artigo original (Martin Fowler) ↗
         </a>
         <a href="index.html" class="btn btn-outline"
-           data-pt="← Voltar à Página Inicial" data-en="← Back to Home">
-          ← Voltar à Página Inicial
+           data-pt="← Voltar ao início" data-en="← Back to home">
+          ← Voltar ao início
         </a>
       </div>
     </section>
 
-    <!-- 1. Resumo da Ideia Central -->
-    <section class="diagram-box">
+    <!-- 1. Ideia Central -->
+    <section class="content-box">
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="1. Resumo da Ideia Central (Com as Palavras da Equipe)" data-en="1. Core Idea Summary (In Our Team's Words)">
-            1. Resumo da Ideia Central (Com as Palavras da Equipe)
-          </h2>
-        </div>
+        <span class="section-label" data-pt="Parte 1" data-en="Part 1">Parte 1</span>
+        <h2 class="section-title" data-pt="Resumo da ideia central" data-en="Core idea summary">Resumo da ideia central</h2>
       </div>
 
-      <div style="display:grid;gap:1.1rem;color:var(--text-secondary);font-size:0.98rem;margin-bottom:1.75rem;">
-        <p data-pt="Em <strong>PresentationDomainDataLayering</strong>, Martin Fowler explica uma das formas mais eficazes de modularizar softwares: dividir o sistema em três camadas com responsabilidades distintas: <strong>Presentation (Apresentação)</strong>, que lida com a interface do usuário, APIs ou linha de comando; <strong>Domain (Domínio)</strong>, onde residem os cálculos e regras de negócio; e <strong>Data Source (Dados)</strong>, responsável pela comunicação com bancos de dados e serviços externos."
-           data-en="In <strong>PresentationDomainDataLayering</strong>, Martin Fowler explains one of the most effective ways to modularize software: splitting the system into three layers with distinct responsibilities: <strong>Presentation</strong>, which handles the user interface, APIs, or CLI; <strong>Domain</strong>, where business rules and calculations live; and <strong>Data Source</strong>, responsible for communicating with databases and external services.">
-          Em <strong>PresentationDomainDataLayering</strong>, Martin Fowler explica uma das formas mais eficazes de modularizar softwares: dividir o sistema em três camadas com responsabilidades distintas: <strong>Presentation (Apresentação)</strong>, que lida com a interface do usuário, APIs ou linha de comando; <strong>Domain (Domínio)</strong>, onde residem os cálculos e regras de negócio; e <strong>Data Source (Dados)</strong>, responsável pela comunicação com bancos de dados e serviços externos.
+      <div class="prose">
+        <p data-pt="Martin Fowler apresenta uma das formas mais importantes de organizar o código de um sistema: separar as responsabilidades em três camadas — <strong>Presentation (Apresentação)</strong>, que cuida das telas e da interação com o usuário; <strong>Domain (Domínio)</strong>, que concentra as regras e cálculos do negócio; e <strong>Data Source (Dados)</strong>, que faz a comunicação com o banco de dados e sistemas externos."
+           data-en="Martin Fowler presents one of the most important ways to structure software: separating responsibilities into three layers — <strong>Presentation</strong>, which handles screens and user interaction; <strong>Domain</strong>, which holds business rules and calculations; and <strong>Data Source</strong>, which communicates with databases and external systems.">
+          Martin Fowler apresenta uma das formas mais importantes de organizar o código de um sistema: separar as responsabilidades em três camadas — <strong>Presentation (Apresentação)</strong>, que cuida das telas e da interação com o usuário; <strong>Domain (Domínio)</strong>, que concentra as regras e cálculos do negócio; e <strong>Data Source (Dados)</strong>, que faz a comunicação com o banco de dados e sistemas externos.
         </p>
-        <p data-pt="A regra de ouro das dependências é unidirecional: <strong>Presentation depende de Domain, e Domain depende de Data Source</strong> (ou utiliza inversão de dependência). Assim, é possível alterar consultas SQL sem tocar nas telas, ou criar uma nova interface (web, mobile ou CLI) reaproveitando a mesma lógica de negócio, além de testar o domínio sem subir interface gráfica."
-           data-en="The golden rule of dependencies is unidirectional: <strong>Presentation depends on Domain, and Domain depends on Data Source</strong> (or uses dependency inversion). This makes it possible to change SQL queries without touching screens, or build a new interface (web, mobile, or CLI) reusing the exact same business logic, while testing domain rules without a GUI.">
-          A regra de ouro das dependências é unidirecional: <strong>Presentation depende de Domain, e Domain depende de Data Source</strong> (ou utiliza inversão de dependência). Assim, é possível alterar consultas SQL sem tocar nas telas, ou criar uma nova interface (web, mobile ou CLI) reaproveitando a mesma lógica de negócio, além de testar o domínio sem subir interface gráfica.
+        <p data-pt="Separar essas três partes evita que comandos de banco de dados e regras de cálculo fiquem misturados dentro do código das telas. Com isso, fica muito mais simples testar as regras do sistema, alterar consultas no banco sem quebrar a interface ou criar um aplicativo mobile reaproveitando a mesma lógica."
+           data-en="Keeping these three parts separate prevents database queries and business calculations from getting mixed into screen code. This makes it much easier to test business rules, modify database queries without breaking the UI, or build a mobile app reusing the same logic.">
+          Separar essas três partes evita que comandos de banco de dados e regras de cálculo fiquem misturados dentro do código das telas. Com isso, fica muito mais simples testar as regras do sistema, alterar consultas no banco sem quebrar a interface ou criar um aplicativo mobile reaproveitando a mesma lógica.
         </p>
-        <p data-pt="Contudo, Fowler faz um alerta fundamental que conecta esse eixo aos anteriores: <strong>essa divisão em 3 camadas só deve estar no nível mais alto em sistemas pequenos</strong>. À medida que o software cresce, os pacotes principais devem ser divididos por <strong>área de domínio</strong> (ex.: Pedidos, Precificação, Clientes), e cada módulo de domínio aplica as três camadas internamente. Isso reduz o escopo de impacto das mudanças e prepara o sistema caso um módulo precise virar microsserviço."
-           data-en="However, Fowler highlights a crucial warning that connects this axis to the previous ones: <strong>Presentation-Domain-Data should only be the top-level structure in small systems</strong>. As a system grows, top-level packages must be organized by <strong>domain area</strong> (e.g., Orders, Pricing, Customers), with each domain module applying the three layers internally. This narrows the blast radius of changes and prepares modules for future extraction.">
-          Contudo, Fowler faz um alerta fundamental que conecta esse eixo aos anteriores: <strong>essa divisão em 3 camadas só deve estar no nível mais alto em sistemas pequenos</strong>. À medida que o software cresce, os pacotes principais devem ser divididos por <strong>área de domínio</strong> (ex.: Pedidos, Precificação, Clientes), e cada módulo de domínio aplica as três camadas internamente. Isso reduz o escopo de impacto das mudanças e prepara o sistema caso um módulo precise virar microsserviço.
+        <p data-pt="Um ponto essencial destacado por Fowler é que essa divisão em 3 camadas só deve ficar no nível principal quando o programa é pequeno. Quando o sistema cresce, o projeto deve ser dividido primeiro por <strong>módulos de negócio</strong> (como Preços, Pedidos e Clientes), e cada módulo usa as três camadas por dentro."
+           data-en="An essential point highlighted by Fowler is that this 3-layer split should only sit at the top level when the program is small. As the system grows, the project should be divided first by <strong>business modules</strong> (such as Pricing, Orders, and Customers), with each module using the three layers internally.">
+          Um ponto essencial destacado por Fowler é que essa divisão em 3 camadas só deve ficar no nível principal quando o programa é pequeno. Quando o sistema cresce, o projeto deve ser dividido primeiro por <strong>módulos de negócio</strong> (como Preços, Pedidos e Clientes), e cada módulo usa as três camadas por dentro.
         </p>
       </div>
 
-      <!-- Diagrama SVG: Camadas Básicas vs. Módulos de Domínio com Camadas Internas -->
+      <!-- Diagrama Claro -->
       <div class="svg-container">
-        <svg viewBox="0 0 860 350" width="860" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama Presentation Domain Data Layering">
-          <!-- Left Box: Basic 3-Layer Architecture -->
-          <rect x="15" y="15" width="365" height="320" rx="14" fill="rgba(15,23,42,0.7)" stroke="rgba(148,163,184,0.25)" />
-          <text x="35" y="45" fill="#f8fafc" font-size="13.5" font-weight="700">1. Sistemas Pequenos: Camadas no Topo</text>
+        <svg viewBox="0 0 820 310" width="820" height="310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Camadas Presentation Domain Data">
+          <!-- Left Box -->
+          <rect x="10" y="10" width="355" height="290" rx="10" fill="#ffffff" stroke="#e4e4e0" />
+          <text x="30" y="38" fill="#18181b" font-size="13" font-weight="700">1. Sistemas Pequenos: Camadas no Topo</text>
 
-          <!-- Presentation Layer -->
-          <rect x="55" y="70" width="285" height="62" rx="10" fill="rgba(99,102,241,0.2)" stroke="#6366f1" stroke-width="2" />
-          <text x="115" y="98" fill="#818cf8" font-size="13" font-weight="700">Presentation (UI / API)</text>
-          <text x="80" y="116" fill="#cbd5e1" font-size="11">Interação com usuário, telas, HTTP/CLI</text>
+          <rect x="45" y="60" width="285" height="58" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+          <text x="110" y="85" fill="#1d4ed8" font-size="12.5" font-weight="700">Presentation (Interface)</text>
+          <text x="85" y="104" fill="#3f3f46" font-size="11">Telas, formulários e rotas da API</text>
 
-          <!-- Arrow 1 -->
-          <line x1="197" y1="132" x2="197" y2="156" stroke="#94a3b8" stroke-width="2" />
-          <polygon points="192,152 202,152 197,160" fill="#94a3b8" />
+          <line x1="187" y1="118" x2="187" y2="142" stroke="#71717a" stroke-width="1.5" />
 
-          <!-- Domain Layer -->
-          <rect x="55" y="162" width="285" height="62" rx="10" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2" />
-          <text x="112" y="190" fill="#22d3ee" font-size="13" font-weight="700">Domain (Lógica de Negócio)</text>
-          <text x="85" y="208" fill="#cbd5e1" font-size="11">Regras, cálculos e validações do domínio</text>
+          <rect x="45" y="142" width="285" height="58" rx="8" fill="#f0fdfa" stroke="#99f6e4" />
+          <text x="115" y="167" fill="#0f766e" font-size="12.5" font-weight="700">Domain (Negócio)</text>
+          <text x="78" y="186" fill="#3f3f46" font-size="11">Cálculos, validações e regras do produto</text>
 
-          <!-- Arrow 2 -->
-          <line x1="197" y1="224" x2="197" y2="248" stroke="#94a3b8" stroke-width="2" />
-          <polygon points="192,244 202,244 197,252" fill="#94a3b8" />
+          <line x1="187" y1="200" x2="187" y2="224" stroke="#71717a" stroke-width="1.5" />
 
-          <!-- Data Source Layer -->
-          <rect x="55" y="254" width="285" height="62" rx="10" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" />
-          <text x="108" y="282" fill="#34d399" font-size="13" font-weight="700">Data Source (Persistência)</text>
-          <text x="82" y="300" fill="#cbd5e1" font-size="11">SQL, Repositórios, Mensageria e Integrações</text>
+          <rect x="45" y="224" width="285" height="58" rx="8" fill="#fffbeb" stroke="#fde68a" />
+          <text x="115" y="249" fill="#b45309" font-size="12.5" font-weight="700">Data Source (Dados)</text>
+          <text x="82" y="268" fill="#3f3f46" font-size="11">Banco de dados SQL e integrações</text>
 
-          <!-- Right Box: Domain Modules at Top Level with Internal Layers -->
-          <rect x="405" y="15" width="440" height="320" rx="14" fill="rgba(15,23,42,0.7)" stroke="rgba(16,185,129,0.45)" />
-          <text x="425" y="45" fill="#34d399" font-size="13.5" font-weight="700">2. Sistemas Maiores: Módulos de Domínio no Topo</text>
+          <!-- Right Box -->
+          <rect x="385" y="10" width="425" height="290" rx="10" fill="#ffffff" stroke="#e4e4e0" />
+          <text x="405" y="38" fill="#18181b" font-size="13" font-weight="700">2. Sistemas Maiores: Módulos de Domínio no Topo</text>
 
-          <!-- Module: Pricing -->
-          <rect x="425" y="68" width="125" height="245" rx="10" fill="rgba(255,255,255,0.03)" stroke="#64748b" stroke-dasharray="5 3" />
-          <text x="448" y="92" fill="#f8fafc" font-size="12" font-weight="700">Módulo: Preços</text>
-          <rect x="438" y="108" width="99" height="48" rx="6" fill="rgba(99,102,241,0.25)" stroke="#6366f1" />
-          <text x="454" y="136" fill="#fff" font-size="11" font-weight="600">Presentation</text>
-          <rect x="438" y="172" width="99" height="48" rx="6" fill="rgba(6,182,212,0.25)" stroke="#06b6d4" />
-          <text x="466" y="200" fill="#fff" font-size="11" font-weight="600">Domain</text>
-          <rect x="438" y="236" width="99" height="48" rx="6" fill="rgba(16,185,129,0.25)" stroke="#10b981" />
-          <text x="456" y="264" fill="#fff" font-size="11" font-weight="600">Data Source</text>
+          <!-- Modulo 1 -->
+          <rect x="405" y="60" width="120" height="222" rx="8" fill="#faf9f5" stroke="#d4d4d8" stroke-dasharray="4 3" />
+          <text x="424" y="82" fill="#18181b" font-size="11.5" font-weight="700">Módulo Preços</text>
+          <rect x="417" y="96" width="96" height="44" rx="5" fill="#eff6ff" stroke="#bfdbfe" />
+          <text x="433" y="122" fill="#1d4ed8" font-size="10.5" font-weight="600">Presentation</text>
+          <rect x="417" y="152" width="96" height="44" rx="5" fill="#f0fdfa" stroke="#99f6e4" />
+          <text x="445" y="178" fill="#0f766e" font-size="10.5" font-weight="600">Domain</text>
+          <rect x="417" y="208" width="96" height="44" rx="5" fill="#fffbeb" stroke="#fde68a" />
+          <text x="435" y="234" fill="#b45309" font-size="10.5" font-weight="600">Data Source</text>
 
-          <!-- Module: Orders -->
-          <rect x="562" y="68" width="125" height="245" rx="10" fill="rgba(255,255,255,0.03)" stroke="#64748b" stroke-dasharray="5 3" />
-          <text x="582" y="92" fill="#f8fafc" font-size="12" font-weight="700">Módulo: Pedidos</text>
-          <rect x="575" y="108" width="99" height="48" rx="6" fill="rgba(99,102,241,0.25)" stroke="#6366f1" />
-          <text x="591" y="136" fill="#fff" font-size="11" font-weight="600">Presentation</text>
-          <rect x="575" y="172" width="99" height="48" rx="6" fill="rgba(6,182,212,0.25)" stroke="#06b6d4" />
-          <text x="603" y="200" fill="#fff" font-size="11" font-weight="600">Domain</text>
-          <rect x="575" y="236" width="99" height="48" rx="6" fill="rgba(16,185,129,0.25)" stroke="#10b981" />
-          <text x="593" y="264" fill="#fff" font-size="11" font-weight="600">Data Source</text>
+          <!-- Modulo 2 -->
+          <rect x="538" y="60" width="120" height="222" rx="8" fill="#faf9f5" stroke="#d4d4d8" stroke-dasharray="4 3" />
+          <text x="554" y="82" fill="#18181b" font-size="11.5" font-weight="700">Módulo Pedidos</text>
+          <rect x="550" y="96" width="96" height="44" rx="5" fill="#eff6ff" stroke="#bfdbfe" />
+          <text x="566" y="122" fill="#1d4ed8" font-size="10.5" font-weight="600">Presentation</text>
+          <rect x="550" y="152" width="96" height="44" rx="5" fill="#f0fdfa" stroke="#99f6e4" />
+          <text x="578" y="178" fill="#0f766e" font-size="10.5" font-weight="600">Domain</text>
+          <rect x="550" y="208" width="96" height="44" rx="5" fill="#fffbeb" stroke="#fde68a" />
+          <text x="568" y="234" fill="#b45309" font-size="10.5" font-weight="600">Data Source</text>
 
-          <!-- Module: Customer -->
-          <rect x="700" y="68" width="125" height="245" rx="10" fill="rgba(255,255,255,0.03)" stroke="#64748b" stroke-dasharray="5 3" />
-          <text x="719" y="92" fill="#f8fafc" font-size="12" font-weight="700">Módulo: Clientes</text>
-          <rect x="713" y="108" width="99" height="48" rx="6" fill="rgba(99,102,241,0.25)" stroke="#6366f1" />
-          <text x="729" y="136" fill="#fff" font-size="11" font-weight="600">Presentation</text>
-          <rect x="713" y="172" width="99" height="48" rx="6" fill="rgba(6,182,212,0.25)" stroke="#06b6d4" />
-          <text x="741" y="200" fill="#fff" font-size="11" font-weight="600">Domain</text>
-          <rect x="713" y="236" width="99" height="48" rx="6" fill="rgba(16,185,129,0.25)" stroke="#10b981" />
-          <text x="731" y="264" fill="#fff" font-size="11" font-weight="600">Data Source</text>
+          <!-- Modulo 3 -->
+          <rect x="670" y="60" width="120" height="222" rx="8" fill="#faf9f5" stroke="#d4d4d8" stroke-dasharray="4 3" />
+          <text x="686" y="82" fill="#18181b" font-size="11.5" font-weight="700">Módulo Clientes</text>
+          <rect x="682" y="96" width="96" height="44" rx="5" fill="#eff6ff" stroke="#bfdbfe" />
+          <text x="698" y="122" fill="#1d4ed8" font-size="10.5" font-weight="600">Presentation</text>
+          <rect x="682" y="152" width="96" height="44" rx="5" fill="#f0fdfa" stroke="#99f6e4" />
+          <text x="710" y="178" fill="#0f766e" font-size="10.5" font-weight="600">Domain</text>
+          <rect x="682" y="208" width="96" height="44" rx="5" fill="#fffbeb" stroke="#fde68a" />
+          <text x="700" y="234" fill="#b45309" font-size="10.5" font-weight="600">Data Source</text>
         </svg>
       </div>
     </section>
@@ -156,46 +142,35 @@
     <!-- 2. Vantagens e Desvantagens -->
     <section>
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="2. Vantagens e Desvantagens da Separação em Camadas" data-en="2. Pros & Cons of Presentation-Domain-Data Layering">
-            2. Vantagens e Desvantagens da Separação em Camadas
-          </h2>
-        </div>
+        <span class="section-label" data-pt="Parte 2" data-en="Part 2">Parte 2</span>
+        <h2 class="section-title" data-pt="Vantagens e desvantagens" data-en="Pros and cons">Vantagens e desvantagens</h2>
       </div>
 
       <div class="pros-cons-grid">
         <div class="pc-card pros">
           <div class="pc-title">
-            <span style="color:var(--accent-3);">✔</span>
-            <span data-pt="Vantagens" data-en="Advantages (Pros)">Vantagens</span>
+            <span data-pt="Vantagens" data-en="Advantages">Vantagens</span>
           </div>
           <ul class="pc-list">
             <li>
               <span class="pc-badge">+</span>
-              <span data-pt="<strong>Isolamento da regra de negócio:</strong> Mudanças no visual da tela ou otimizações de banco de dados (SQL) não corrompem as regras centrais do negócio."
-                    data-en="<strong>Business logic isolation:</strong> UI redesigns or SQL query optimizations do not corrupt core business rules.">
-                <strong>Isolamento da regra de negócio:</strong> Mudanças no visual da tela ou otimizações de banco de dados (SQL) não corrompem as regras centrais do negócio.
+              <span data-pt="<strong>Proteção das regras de negócio:</strong> Alterar o layout de uma tela ou mudar uma tabela no banco não afeta a lógica principal do sistema."
+                    data-en="<strong>Protects business rules:</strong> Changing a screen layout or database table doesn't break core business logic.">
+                <strong>Proteção das regras de negócio:</strong> Alterar o layout de uma tela ou mudar uma tabela no banco não afeta a lógica principal do sistema.
               </span>
             </li>
             <li>
               <span class="pc-badge">+</span>
-              <span data-pt="<strong>Alta testabilidade automatizada:</strong> A camada de Domínio pode ser testada rapidamente com testes unitários sem depender de navegador ou banco de dados lento."
-                    data-en="<strong>High automated testability:</strong> The Domain layer can be unit-tested rapidly without spinning up a browser or slow database.">
-                <strong>Alta testabilidade automatizada:</strong> A camada de Domínio pode ser testada rapidamente com testes unitários sem depender de navegador ou banco de dados lento.
+              <span data-pt="<strong>Facilidade para criar testes:</strong> É possível testar os cálculos e validações rapidamente sem precisar abrir telas ou subir banco de dados."
+                    data-en="<strong>Easier automated testing:</strong> Calculations and validations can be tested quickly without opening screens or running a database.">
+                <strong>Facilidade para criar testes:</strong> É possível testar os cálculos e validações rapidamente sem precisar abrir telas ou subir banco de dados.
               </span>
             </li>
             <li>
               <span class="pc-badge">+</span>
-              <span data-pt="<strong>Múltiplos canais na mesma lógica:</strong> Permite acoplar Web, App Mobile e API pública sobre a mesma camada Domain sem duplicar regras."
-                    data-en="<strong>Multiple channels over the same logic:</strong> Web UI, Mobile App, and Public APIs can share the exact same Domain layer without duplicating rules.">
-                <strong>Múltiplos canais na mesma lógica:</strong> Permite acoplar Web, App Mobile e API pública sobre a mesma camada Domain sem duplicar regras.
-              </span>
-            </li>
-            <li>
-              <span class="pc-badge">+</span>
-              <span data-pt="<strong>Atuação paralela de especialistas:</strong> Desenvolvedores com foco em UX/UI e especialistas em banco/dados conseguem trabalhar com menor colisão no código."
-                    data-en="<strong>Parallel specialist work:</strong> UI/UX engineers and database specialists can work with fewer code collisions.">
-                <strong>Atuação paralela de especialistas:</strong> Desenvolvedores com foco em UX/UI e especialistas em banco/dados conseguem trabalhar com menor colisão no código.
+              <span data-pt="<strong>Reaproveitamento de código:</strong> A mesma camada de negócio pode atender tanto o site web quanto um aplicativo mobile."
+                    data-en="<strong>Code reuse:</strong> The same domain layer can serve both a web application and a mobile app.">
+                <strong>Reaproveitamento de código:</strong> A mesma camada de negócio pode atender tanto o site web quanto um aplicativo mobile.
               </span>
             </li>
           </ul>
@@ -203,36 +178,28 @@
 
         <div class="pc-card cons">
           <div class="pc-title">
-            <span style="color:var(--accent-danger);">✖</span>
-            <span data-pt="Desvantagens" data-en="Disadvantages (Cons)">Desvantagens</span>
+            <span data-pt="Desvantagens" data-en="Disadvantages">Desvantagens</span>
           </div>
           <ul class="pc-list">
             <li>
               <span class="pc-badge">−</span>
-              <span data-pt="<strong>Efeito cascata em mudanças simples:</strong> Adicionar um simples campo em um formulário exige alterar arquivos nas três camadas (Tela, Domínio e Banco)."
-                    data-en="<strong>Ripple effect for simple changes:</strong> Adding a single form field often requires touching files across all three layers.">
-                <strong>Efeito cascata em mudanças simples:</strong> Adicionar um simples campo em um formulário exige alterar arquivos nas três camadas (Tela, Domínio e Banco).
+              <span data-pt="<strong>Mais passos para tarefas simples:</strong> Incluir um campo novo em um cadastro básico exige mexer em arquivos nas três camadas."
+                    data-en="<strong>More steps for simple tasks:</strong> Adding a single field to a basic form requires editing files across all three layers.">
+                <strong>Mais passos para tarefas simples:</strong> Incluir um campo novo em um cadastro básico exige mexer em arquivos nas três camadas.
               </span>
             </li>
             <li>
               <span class="pc-badge">−</span>
-              <span data-pt="<strong>Perda de coesão se usado no topo de grandes sistemas:</strong> Se o sistema todo tiver apenas 3 pastas gigantes (UI, Domain, Data), entender uma funcionalidade exige navegar pelo projeto inteiro."
-                    data-en="<strong>Loss of cohesion if used at the top of large systems:</strong> If a huge system only has 3 giant folders (UI, Domain, Data), understanding one feature requires jumping across the whole project.">
-                <strong>Perda de coesão se usado no topo de grandes sistemas:</strong> Se o sistema todo tiver apenas 3 pastas gigantes (UI, Domain, Data), entender uma funcionalidade exige navegar pelo projeto inteiro.
+              <span data-pt="<strong>Dificuldade de navegação em sistemas grandes:</strong> Se o projeto inteiro tiver apenas 3 pastas gigantes, fica difícil achar tudo que pertence a uma mesma funcionalidade."
+                    data-en="<strong>Harder navigation in large systems:</strong> If a large project only has 3 giant folders, finding everything related to one feature becomes harder.">
+                <strong>Dificuldade de navegação em sistemas grandes:</strong> Se o projeto inteiro tiver apenas 3 pastas gigantes, fica difícil achar tudo que pertence a uma mesma funcionalidade.
               </span>
             </li>
             <li>
               <span class="pc-badge">−</span>
-              <span data-pt="<strong>Código repetitivo (Boilerplate / Mapeamento):</strong> Excesso de conversão de objetos entre DTOs de tela, entidades de domínio e tabelas de banco."
-                    data-en="<strong>Mapping boilerplate:</strong> Extra effort converting data between UI DTOs, domain entities, and database models.">
-                <strong>Código repetitivo (Boilerplate / Mapeamento):</strong> Excesso de conversão de objetos entre DTOs de tela, entidades de domínio e tabelas de banco.
-              </span>
-            </li>
-            <li>
-              <span class="pc-badge">−</span>
-              <span data-pt="<strong>Risco de 'Modelo de Domínio Anêmico':</strong> Quando a equipe cria a camada Domain, mas coloca toda a regra de negócio espalhada nos controllers de UI ou em procedures SQL."
-                    data-en="<strong>Risk of 'Anemic Domain Model':</strong> Creating a Domain layer on paper while leaking business logic into UI controllers or SQL stored procedures.">
-                <strong>Risco de 'Modelo de Domínio Anêmico':</strong> Quando a equipe cria a camada Domain, mas coloca toda a regra de negócio espalhada nos controllers de UI ou em procedures SQL.
+              <span data-pt="<strong>Risco de colocar regra no lugar errado:</strong> Sem revisão de código, a equipe pode acabar colocando regras de negócio direto na tela por pressa."
+                    data-en="<strong>Risk of misplaced logic:</strong> Without code reviews, developers in a hurry might still leak business rules into the UI.">
+                <strong>Risco de colocar regra no lugar errado:</strong> Sem revisão de código, a equipe pode acabar colocando regras de negócio direto na tela por pressa.
               </span>
             </li>
           </ul>
@@ -243,86 +210,52 @@
     <!-- 3. Impacto na Gestão do Projeto -->
     <section>
       <div class="section-header">
-        <div>
-          <h2 class="section-title" data-pt="3. Impacto na Gestão do Projeto (Prazo, Custo, Equipe e Riscos)" data-en="3. Impact on Project Management (Schedule, Cost, Team & Risks)">
-            3. Impacto na Gestão do Projeto (Prazo, Custo, Equipe e Riscos)
-          </h2>
-          <p class="section-desc" data-pt="Como a separação em camadas impacta estimativas, alocação de pessoas e qualidade das entregas." data-en="How layered architecture impacts estimates, resource allocation, and delivery quality.">
-            Como a separação em camadas impacta estimativas, alocação de pessoas e qualidade das entregas.
-          </p>
-        </div>
+        <span class="section-label" data-pt="Parte 3" data-en="Part 3">Parte 3</span>
+        <h2 class="section-title" data-pt="Impacto na gestão do projeto" data-en="Impact on project management">Impacto na gestão do projeto</h2>
       </div>
 
       <div class="pm-grid">
-        <!-- Prazo -->
         <div class="pm-card">
           <div class="pm-card-header">
-            <div class="pm-pillar-title">
-              <span>⏱️</span>
-              <span data-pt="Prazo (Cronograma)" data-en="Schedule (Time)">Prazo (Cronograma)</span>
-            </div>
-            <span class="pm-level level-low" data-pt="Alta Previsibilidade" data-en="High Predictability">Alta Previsibilidade</span>
+            <span class="pm-pillar-title" data-pt="Prazo" data-en="Schedule">Prazo</span>
+            <span class="pm-level level-low" data-pt="Ritmo constante" data-en="Steady pace">Ritmo constante</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 84%; background: var(--accent-3);"></div>
-          </div>
-          <p data-pt="<strong>Velocidade sustentável no médio e longo prazo:</strong> Embora telas puramente cadastrais (CRUD) levem um pouco mais de tempo inicial pela divisão de camadas, o cronograma não degrada com o tempo, pois novas regras de negócio não quebram telas nem queries existentes."
-             data-en="<strong>Sustainable medium- and long-term velocity:</strong> While simple CRUD screens take slightly longer initially, the schedule does not degrade over time because new business rules don't break existing screens or queries.">
-            <strong>Velocidade sustentável no médio e longo prazo:</strong> Embora telas puramente cadastrais (CRUD) levem um pouco mais de tempo inicial pela divisão de camadas, o cronograma não degrada com o tempo, pois novas regras de negócio não quebram telas nem queries existentes.
+          <p data-pt="Garante que o projeto não fique cada vez mais lento com o passar dos meses, pois mudanças em uma camada não causam efeito dominó inesperado nas outras."
+             data-en="Prevents the project from slowing down over the months, since changes in one layer don't cause unexpected domino effects in others.">
+            Garante que o projeto não fique cada vez mais lento com o passar dos meses, pois mudanças em uma camada não causam efeito dominó inesperado nas outras.
           </p>
         </div>
 
-        <!-- Custo -->
         <div class="pm-card">
           <div class="pm-card-header">
-            <div class="pm-pillar-title">
-              <span>💰</span>
-              <span data-pt="Custo (Orçamento)" data-en="Cost (Budget)">Custo (Orçamento)</span>
-            </div>
-            <span class="pm-level level-low" data-pt="Reduz Manutenção" data-en="Lowers Maintenance">Reduz Manutenção</span>
+            <span class="pm-pillar-title" data-pt="Custo" data-en="Cost">Custo</span>
+            <span class="pm-level level-low" data-pt="Menor manutenção" data-en="Lower maintenance">Menor manutenção</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 35%; background: var(--accent-3);"></div>
-          </div>
-          <p data-pt="<strong>Economia expressiva em evolução e testes:</strong> Reduz o custo de QA (testes automatizados rodam em milissegundos na camada Domain) e reduz o custo caso a empresa decida trocar um framework de interface ou migrar de banco de dados."
-             data-en="<strong>Significant savings in evolution and QA:</strong> Reduces QA costs (automated tests run in milliseconds against the Domain layer) and lowers the cost of swapping UI frameworks or migrating databases later.">
-            <strong>Economia expressiva em evolução e testes:</strong> Reduz o custo de QA (testes automatizados rodam em milissegundos na camada Domain) e reduz o custo caso a empresa decida trocar um framework de interface ou migrar de banco de dados.
+          <p data-pt="Reduz o custo de manutenção e correção de bugs, além de economizar horas de retrabalho caso o projeto precise mudar a interface visual ou o banco de dados."
+             data-en="Reduces maintenance and bug-fixing costs, and saves rework hours if the project later needs to redesign its UI or change databases.">
+            Reduz o custo de manutenção e correção de bugs, além de economizar horas de retrabalho caso o projeto precise mudar a interface visual ou o banco de dados.
           </p>
         </div>
 
-        <!-- Equipe -->
         <div class="pm-card">
           <div class="pm-card-header">
-            <div class="pm-pillar-title">
-              <span>👥</span>
-              <span data-pt="Equipe" data-en="Team">Equipe</span>
-            </div>
-            <span class="pm-level level-med" data-pt="Cuidado com Silos" data-en="Watch for Silos">Cuidado com Silos</span>
+            <span class="pm-pillar-title" data-pt="Equipe" data-en="Team">Equipe</span>
+            <span class="pm-level level-med" data-pt="Boa divisão" data-en="Clear division">Boa divisão</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 60%; background: var(--accent-2);"></div>
-          </div>
-          <p data-pt="<strong>Onboarding claro, mas atenção à estrutura:</strong> Facilita a entrada de novos membros (cada um sabe exatamente onde ficam telas, regras e SQL). Porém, o gerente de projetos deve modularizar o topo por <strong>Domínio</strong> para que as equipes não fiquem presas em silos técnicos horizontais."
-             data-en="<strong>Clear onboarding, but watch team structure:</strong> Makes onboarding easy (everyone knows where UI, rules, and SQL belong). However, the PM should modularize the top level by <strong>Domain</strong> so teams don't get stuck in horizontal technical silos.">
-            <strong>Onboarding claro, mas atenção à estrutura:</strong> Facilita a entrada de novos membros (cada um sabe exatamente onde ficam telas, regras e SQL). Porém, o gerente de projetos deve modularizar o topo por <strong>Domínio</strong> para que as equipes não fiquem presas em silos técnicos horizontais.
+          <p data-pt="Facilita a entrada de novos membros porque a estrutura do projeto é clara. Também permite que pessoas com foco em interface e pessoas focadas em dados trabalhem em paralelo."
+             data-en="Makes onboarding easier because the project structure is clear. It also lets UI-focused and data-focused developers work in parallel.">
+            Facilita a entrada de novos membros porque a estrutura do projeto é clara. Também permite que pessoas com foco em interface e pessoas focadas em dados trabalhem em paralelo.
           </p>
         </div>
 
-        <!-- Riscos -->
         <div class="pm-card">
           <div class="pm-card-header">
-            <div class="pm-pillar-title">
-              <span>⚠️</span>
-              <span data-pt="Riscos" data-en="Risks">Riscos</span>
-            </div>
-            <span class="pm-level level-low" data-pt="Baixo Risco Técnico" data-en="Low Technical Risk">Baixo Risco Técnico</span>
+            <span class="pm-pillar-title" data-pt="Riscos" data-en="Risks">Riscos</span>
+            <span class="pm-level level-low" data-pt="Menor risco de bugs" data-en="Lower bug risk">Menor risco de bugs</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 28%; background: var(--accent-3);"></div>
-          </div>
-          <p data-pt="<strong>Mitigação de bugs em regras críticas:</strong> Como os cálculos financeiros ou operacionais ficam isolados na camada Domain, o risco de regressão em produção cai drasticamente. O único risco de gestão é permitir que regras de negócio vazem para a camada de tela."
-             data-en="<strong>Mitigates bugs in critical business rules:</strong> Because financial or operational calculations are isolated in the Domain layer, production regression risks drop sharply. The main management risk is letting business logic leak into the UI layer.">
-            <strong>Mitigação de bugs em regras críticas:</strong> Como os cálculos financeiros ou operacionais ficam isolados na camada Domain, o risco de regressão em produção cai drasticamente. O único risco de gestão é permitir que regras de negócio vazem para a camada de tela.
+          <p data-pt="Diminui muito o risco de erros nas regras principais do negócio, já que a camada de domínio fica isolada e pode ser testada automaticamente com facilidade."
+             data-en="Greatly reduces the risk of bugs in core business rules, since the domain layer is isolated and can be easily covered by automated tests.">
+            Diminui muito o risco de erros nas regras principais do negócio, já que a camada de domínio fica isolada e pode ser testada automaticamente com facilidade.
           </p>
         </div>
       </div>
@@ -331,27 +264,25 @@
     <!-- 4. Link para o Post Original -->
     <section class="original-banner">
       <div>
-        <h3 style="font-size:1.15rem;margin-bottom:0.3rem;"
-            data-pt="4. Referência Oficial Verificada"
-            data-en="4. Verified Official Reference">4. Referência Oficial Verificada</h3>
-        <p style="color:var(--text-secondary);font-size:0.92rem;"
-           data-pt="Artigo original de Martin Fowler: 'PresentationDomainDataLayering' (Publicado em 26 de agosto de 2015)."
-           data-en="Original article by Martin Fowler: 'PresentationDomainDataLayering' (Published August 26, 2015).">
-          Artigo original de Martin Fowler: 'PresentationDomainDataLayering' (Publicado em 26 de agosto de 2015).
+        <h3 style="font-size:1.05rem;margin-bottom:0.2rem;"
+            data-pt="4. Post Original de Referência"
+            data-en="4. Original Reference Post">4. Post Original de Referência</h3>
+        <p style="color:var(--text-muted);font-size:0.88rem;">
+          Martin Fowler — PresentationDomainDataLayering (martinfowler.com/bliki/PresentationDomainDataLayering.html)
         </p>
       </div>
       <a href="https://martinfowler.com/bliki/PresentationDomainDataLayering.html" target="_blank" rel="noopener" class="btn btn-primary"
-         data-pt="Acessar martinfowler.com/bliki/PresentationDomainDataLayering.html ↗"
-         data-en="Visit martinfowler.com/bliki/PresentationDomainDataLayering.html ↗">
-        Acessar martinfowler.com/bliki/PresentationDomainDataLayering.html ↗
+         data-pt="Ler post original ↗"
+         data-en="Read original post ↗">
+        Ler post original ↗
       </a>
     </section>
   </main>
 
   <footer class="footer">
-    <p data-pt="Projeto Acadêmico SENAI EAD • Eixo 3: Camadas e Execução (PresentationDomainDataLayering) • Martin Fowler"
-       data-en="SENAI EAD Academic Project • Axis 3: Layers & Execution (PresentationDomainDataLayering) • Martin Fowler">
-      Projeto Acadêmico SENAI EAD • Eixo 3: Camadas e Execução (PresentationDomainDataLayering) • Martin Fowler
+    <p data-pt="SENAI EAD • Gestão de Projetos • Eixo 3: Presentation Domain Data Layering"
+       data-en="SENAI EAD • Project Management • Axis 3: Presentation Domain Data Layering">
+      SENAI EAD • Gestão de Projetos • Eixo 3: Presentation Domain Data Layering
     </p>
   </footer>
 
