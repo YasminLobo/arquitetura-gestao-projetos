@@ -1,12 +1,23 @@
 (function () {
   const STORAGE_LANG_KEY = 'ead_arch_lang';
-  const STORAGE_TEAM_KEY = 'ead_arch_team_v1';
 
-  const defaultTeam = [
+  const teamMembers = [
     {
-      name: 'Yasmin Lobo',
-      rolePt: 'Gestão de Projetos & Arquitetura de Software',
-      roleEn: 'Project Management & Software Architecture',
+      name: 'Luis Otávio de Deus dos Santos',
+      rolePt: 'Integrante da Equipe • Gestão de Projetos',
+      roleEn: 'Team Member • Project Management',
+      pages: 'https://yasminlobo.github.io/arquitetura-gestao-projetos/'
+    },
+    {
+      name: 'Vyttor Gabriel Ramos Camillo',
+      rolePt: 'Integrante da Equipe • Gestão de Projetos',
+      roleEn: 'Team Member • Project Management',
+      pages: 'https://yasminlobo.github.io/arquitetura-gestao-projetos/'
+    },
+    {
+      name: 'Yasmin Siqueira Lobo',
+      rolePt: 'Integrante da Equipe • Gestão de Projetos',
+      roleEn: 'Team Member • Project Management',
       github: 'https://github.com/YasminLobo',
       pages: 'https://yasminlobo.github.io/arquitetura-gestao-projetos/'
     }
@@ -38,96 +49,40 @@
     renderTeam();
   }
 
-  function getTeam() {
-    try {
-      const saved = localStorage.getItem(STORAGE_TEAM_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return defaultTeam;
-  }
-
-  function saveTeam(team) {
-    localStorage.setItem(STORAGE_TEAM_KEY, JSON.stringify(team));
-    renderTeam();
-  }
-
   function getInitials(name) {
-    return name
-      .split(' ')
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part[0].toUpperCase())
-      .join('');
+    const parts = name.split(' ').filter((p) => p.length > 2);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
   }
 
   function renderTeam() {
     const container = document.getElementById('team-container');
     if (!container) return;
     const lang = getLang();
-    const team = getTeam();
 
-    container.innerHTML = team
-      .map((member, idx) => {
+    container.innerHTML = teamMembers
+      .map((member) => {
         const role = lang === 'pt' ? member.rolePt : member.roleEn;
-        const removeBtn =
-          idx > 0
-            ? `<button onclick="window.removeTeamMember(${idx})" style="margin-left:auto;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:0.78rem;" title="Remover">✕</button>`
-            : '';
+        const ghLink = member.github
+          ? `<span style="color:var(--border)">•</span><a href="${member.github}" target="_blank" rel="noopener">GitHub ↗</a>`
+          : '';
         return `
         <div class="member-card">
           <div class="avatar">${getInitials(member.name)}</div>
           <div class="member-info" style="flex:1">
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-              <h4>${member.name}</h4>
-              ${removeBtn}
-            </div>
+            <h4>${member.name}</h4>
             <p>${role}</p>
             <div class="member-links">
               <a href="${member.pages}" target="_blank" rel="noopener">GitHub Pages ↗</a>
-              <span style="color:var(--border)">•</span>
-              <a href="${member.github}" target="_blank" rel="noopener">GitHub ↗</a>
+              ${ghLink}
             </div>
           </div>
         </div>
       `;
       })
       .join('');
-  }
-
-  window.removeTeamMember = function (idx) {
-    const team = getTeam();
-    team.splice(idx, 1);
-    saveTeam(team);
-  };
-
-  function setupTeamForm() {
-    const form = document.getElementById('add-member-form');
-    if (!form) return;
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nameInput = document.getElementById('member-name');
-      const userInput = document.getElementById('member-github-user');
-      const name = nameInput.value.trim();
-      const username = userInput.value.trim().replace(/^@/, '');
-      if (!name || !username) return;
-
-      const team = getTeam();
-      team.push({
-        name,
-        rolePt: 'Integrante da Equipe',
-        roleEn: 'Team Member',
-        github: `https://github.com/${username}`,
-        pages: `https://${username.toLowerCase()}.github.io/arquitetura-gestao-projetos/`
-      });
-      saveTeam(team);
-      nameInput.value = '';
-      userInput.value = '';
-    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -137,6 +92,5 @@
       });
     });
     setLang(getLang());
-    setupTeamForm();
   });
 })();

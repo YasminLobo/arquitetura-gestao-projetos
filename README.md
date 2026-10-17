@@ -25,19 +25,17 @@ Site interativo e bilíngue (**Português / Inglês**) desenvolvido em **HTML5, 
 
 ## Estrutura do Projeto
 
-- `index.html`: Página inicial com os integrantes da equipe, acesso às 3 páginas de conteúdo, simulador interativo de complexidade arquitetural, matriz comparativa de gestão e texto pronto para LinkedIn.
+- `index.html`: Página inicial com os integrantes da equipe, acesso às 3 páginas de conteúdo e quadro comparativo de gestão.
 - `eixo1-monolith-first.html`: Página dedicada ao Eixo 1 (*Monolith First*), com resumo autoral, gráfico SVG da curva de produtividade, vantagens/desvantagens e impacto em Prazo, Custo, Equipe e Riscos.
 - `eixo2-micro-frontends.html`: Página dedicada ao Eixo 2 (*Micro Frontends*), com resumo autoral, diagrama SVG de equipes verticais vs. silos horizontais, vantagens/desvantagens e impacto na gestão.
 - `eixo3-layering.html`: Página dedicada ao Eixo 3 (*PresentationDomainDataLayering*), com resumo autoral, diagrama SVG comparando camadas no topo vs. módulos de domínio no topo, vantagens/desvantagens e impacto na gestão.
-- `styles.css`: Estilização responsiva com suporte a Tema Escuro e Tema Claro.
-- `script.js`: Controle de internacionalização instantânea (**PT-BR / EN-US**), simulador de gestão e gerenciamento de integrantes.
+- `styles.css`: Estilização responsiva e editorial.
+- `script.js`: Controle de internacionalização instantânea (**PT-BR / EN-US**) e exibição dos integrantes.
 
 ---
 
-## Integrantes e Links do GitHub Pages
+## Integrantes da Equipe
 
-- **Yasmin Lobo** — [https://yasminlobo.github.io/arquitetura-gestao-projetos/](https://yasminlobo.github.io/arquitetura-gestao-projetos/)
-
-
----
-
+- **Luis Otávio de Deus dos Santos**
+- **Vyttor Gabriel Ramos Camillo**
+- **Yasmin Siqueira Lobo** — [https://yasminlobo.github.io/arquitetura-gestao-projetos/](https://yasminlobo.github.io/arquitetura-gestao-projetos/)
