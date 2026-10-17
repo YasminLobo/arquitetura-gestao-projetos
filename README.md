@@ -38,21 +38,6 @@ Site interativo e bilíngue (**Português / Inglês**) desenvolvido em **HTML5, 
 
 - **Yasmin Lobo** — [https://yasminlobo.github.io/arquitetura-gestao-projetos/](https://yasminlobo.github.io/arquitetura-gestao-projetos/)
 
-### Como outros integrantes da equipe podem publicar no seu próprio GitHub Pages em 1 minuto:
-1. Acesse o repositório principal no GitHub ([github.com/YasminLobo/arquitetura-gestao-projetos](https://github.com/YasminLobo/arquitetura-gestao-projetos)) e clique no botão **Fork** (no canto superior direito) para copiar o projeto para a sua própria conta do GitHub.
-2. No seu repositório copiado, vá na aba **Settings** (Configurações) → menu lateral **Pages**.
-3. Em **Build and deployment** > **Branch**, selecione a branch `main` (pasta `/ (root)`) e clique em **Save**.
-4. Aguarde cerca de 1 minuto e seu link único estará ativo em: `https://SEU-USUARIO.github.io/arquitetura-gestao-projetos/`.
 
 ---
 
-## Sugestão de Texto para o LinkedIn (Sem emojis e direto ao ponto)
-
-> Na Unidade Curricular de Gestão de Projetos do SENAI, desenvolvemos uma aplicação web para analisar um ponto que muitas vezes passa despercebido no dia a dia de engenharia: decisões de arquitetura de software são, na prática, decisões de gestão de projetos.
->
-> A partir da literatura técnica de Martin Fowler, selecionamos três conceitos de eixos distintos — Monolith First, Micro Frontends e Presentation-Domain-Data Layering — e mapeamos como cada escolha impacta quatro variáveis críticas de qualquer projeto: prazo, custo, organização de equipe e riscos.
->
-> Quando uma equipe adota microsserviços cedo demais, sem que as fronteiras do domínio estejam claras, o projeto paga o que Fowler chama de Microservice Premium: o cronograma desacelera e o custo de infraestrutura sobe antes de o produto validar seu valor. Da mesma forma, adotar Micro Frontends ou separar camadas de apresentação, domínio e dados redefine diretamente a autonomia das equipes (Lei de Conway) e o custo de manutenção no longo prazo.
->
-> O material completo, com diagramas e matrizes de impacto em português e inglês, está disponível em:
-> https://yasminlobo.github.io/arquitetura-gestao-projetos/
